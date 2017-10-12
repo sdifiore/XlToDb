@@ -16,8 +16,6 @@ namespace XlToDb.Model
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-        public float QuantidadeCusto { get; set; }
-
         public int UnidadeId { get; set; }
 
         public Unidade Unidade { get; set; }
@@ -30,6 +28,10 @@ namespace XlToDb.Model
 
         public ClasseCusto ClasseCusto { get; set; }
 
+        public int CategoriaId { get; set; }
+
+        public Categoria Categoria { get; set; }
+
         public int FamiliaId { get; set; }
 
         public Familia Familia { get; set; }
@@ -38,12 +40,7 @@ namespace XlToDb.Model
 
         public Linha Linha { get; set; }
 
-        public int GrupoRateioId { get; set; }
-
-        public GrupoRateio GrupoRateio { get; set; }
-
-        public int CategoriaId { get; set; }
-
-        public Categoria Categoria { get; set; }
+        [Display(Name = "Produto")]
+        public bool FlagProduto { get; set; }
     }
 }

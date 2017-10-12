@@ -8,58 +8,68 @@ namespace XlToDb
 {
     public class ExcelDb
     {
-        public void Insumo()
-        {
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Insumos);
-            Excel._Worksheet worksheet = workbook.Sheets[2];
-            Excel.Range range = worksheet.UsedRange;
+        //public void Insumo()
+        //{
+        //    Excel.Application xlApp = new Excel.Application();
+        //    Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Insumos);
+        //    Excel._Worksheet worksheet = workbook.Sheets[2];
+        //    Excel.Range range = worksheet.UsedRange;
 
-            for (int i = 2; i < range.Rows.Count; i++)
-            {
-                var data = new Insumo
-                {
-                    Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "0000000000",
-                    Descricao = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null ? range.Cells[i, 2].Value2.ToString() : "--",
-                    UnidadeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8,
-                    TipoId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? Select.Tipo(range.Cells[i, 4].Value2.ToString()) : 4,
-                    ClasseCustoId = range.Cells[i, 5] != null && range.Cells[i, 5].Value2 != null ? Select.ClasseCusto(range.Cells[i, 5].Value2.ToString()) : 9,
-                    CategoriaId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? Select.Categoria(range.Cells[i, 6].Value2.ToString()) : 12,
-                    FamiliaId = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? Select.Familia(range.Cells[i, 7].Value2.ToString()) : 15,
-                    LinhaId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.Linha(range.Cells[i, 8].Value2.ToString()) : 12,
-                    Peso = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null ? (float)range.Cells[i, 9].Value2 : 0,
-                };
-            }
-        }
+        //    for (int i = 2; i < range.Rows.Count; i++)
+        //    {
+        //        var data = new Insumo
+        //        {
+        //            Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "0000000000",
+        //            Descricao = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null ? range.Cells[i, 2].Value2.ToString() : "--",
+        //            UnidadeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8,
+        //            TipoId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? Select.Tipo(range.Cells[i, 4].Value2.ToString()) : 4,
+        //            ClasseCustoId = range.Cells[i, 5] != null && range.Cells[i, 5].Value2 != null ? Select.ClasseCusto(range.Cells[i, 5].Value2.ToString()) : 9,
+        //            CategoriaId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? Select.Categoria(range.Cells[i, 6].Value2.ToString()) : 12,
+        //            FamiliaId = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? Select.Familia(range.Cells[i, 7].Value2.ToString()) : 15,
+        //            LinhaId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.Linha(range.Cells[i, 8].Value2.ToString()) : 12,
+        //            Peso = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null ? (float)range.Cells[i, 9].Value2 : 0,
+        //        };
+        //    }
+        //}
 
         public void Produto()
         {
             var db = new EntityContext();
 
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Produtos);
-            Excel._Worksheet worksheet = workbook.Sheets[3];
-            Excel.Range range = worksheet.UsedRange;
-
-            for (int i = 2; i <= range.Rows.Count; i++)
+            for (int k = 2; k < 4; k++)
             {
+                Excel.Application xlApp = new Excel.Application();
+                Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Produtos);
+                Excel._Worksheet worksheet = workbook.Sheets[k];
+                Excel.Range range = worksheet.UsedRange;
 
-                var data = new Produto
+                for (int i = 2; i <= range.Rows.Count; i++)
                 {
-                    Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "0000000000",
-                    Descricao = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null ? range.Cells[i, 2].Value2.ToString() : "--",
-                    UnidadeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8,
-                    TipoId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? Select.Tipo(range.Cells[i, 4].Value2.ToString()) : 4,
-                    ClasseCustoId = range.Cells[i, 5] != null && range.Cells[i, 5].Value2 != null ? Select.ClasseCusto(range.Cells[i, 5].Value2.ToString()) : 9,
-                    CategoriaId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? Select.Categoria(range.Cells[i, 6].Value2.ToString()) : 12,
-                    FamiliaId = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? Select.Familia(range.Cells[i, 7].Value2.ToString()) : 15,
-                    LinhaId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.Linha(range.Cells[i, 8].Value2.ToString()) : 12,
-                    GrupoRateioId = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null ? Select.GrupoRateio(range.Cells[i, 9].Value2.ToString(), 3) : 18
-                };
+                    string apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "0000000000";
+                    var teste = db.Produtos.SingleOrDefault(p => p.Apelido == apelido);
 
+                    if (teste == null)
+                    {
+                        var data = new Produto
+                        {
+                            Apelido = apelido,
+                            Descricao = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null ? range.Cells[i, 2].Value2.ToString() : "--",
+                            UnidadeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8,
+                            TipoId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? Select.Tipo(range.Cells[i, 4].Value2.ToString()) : 4,
+                            ClasseCustoId = range.Cells[i, 5] != null && range.Cells[i, 5].Value2 != null ? Select.ClasseCusto(range.Cells[i, 5].Value2.ToString()) : 9,
+                            CategoriaId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? Select.Categoria(range.Cells[i, 6].Value2.ToString()) : 12,
+                            FamiliaId = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? Select.Familia(range.Cells[i, 7].Value2.ToString()) : 15,
+                            LinhaId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.Linha(range.Cells[i, 8].Value2.ToString()) : 12,
+                            FlagProduto = k == 2 ? true : false
+                        };
 
-                db.Produtos.Add(data);
-                db.SaveChanges();
+                        db.Produtos.Add(data);
+                        db.SaveChanges();
+                        Console.WriteLine($"{k}, {i}");
+                    }
+
+                    else DbLogger.Log(Reason.Info, $"Produto em duplicação: {apelido}");
+                } 
             } 
         }
 
