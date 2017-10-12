@@ -32,7 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,11 +49,91 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbLogger.cs" />
+    <Compile Include="ExcelDb.cs" />
+    <Compile Include="MedidaFita.cs" />
+    <Compile Include="Migrations\201710011934142_InitialModel.cs" />
+    <Compile Include="Migrations\201710011934142_InitialModel.Designer.cs">
+      <DependentUpon>201710011934142_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710011939458_AddProdutoesTable.cs" />
+    <Compile Include="Migrations\201710011939458_AddProdutoesTable.Designer.cs">
+      <DependentUpon>201710011939458_AddProdutoesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710012101126_AddLogDataTable.cs" />
+    <Compile Include="Migrations\201710012101126_AddLogDataTable.Designer.cs">
+      <DependentUpon>201710012101126_AddLogDataTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Area.cs" />
+    <Compile Include="Model\Categoria.cs" />
+    <Compile Include="Model\ClasseCusto.cs" />
+    <Compile Include="Model\CustoFolha.cs" />
+    <Compile Include="Model\Estrutura.cs" />
+    <Compile Include="Model\Files.cs" />
+    <Compile Include="Model\Finalidade.cs" />
+    <Compile Include="Model\GrupoRateio.cs" />
+    <Compile Include="Model\Insumo.cs" />
+    <Compile Include="Model\Linha.cs" />
+    <Compile Include="Model\EntityContext.cs" />
+    <Compile Include="Model\Familia.cs" />
+    <Compile Include="Model\LogData.cs" />
+    <Compile Include="Model\Operacao.cs" />
+    <Compile Include="Model\Produto.cs" />
+    <Compile Include="Model\QtdEmbalagem.cs" />
+    <Compile Include="Model\Reason.cs" />
+    <Compile Include="Model\Sequencia.cs" />
+    <Compile Include="Model\Setor.cs" />
+    <Compile Include="Model\Tipo.cs" />
+    <Compile Include="Model\Unidade.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Select.cs" />
+    <Compile Include="Stack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710011934142_InitialModel.resx">
+      <DependentUpon>201710011934142_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710011939458_AddProdutoesTable.resx">
+      <DependentUpon>201710011939458_AddProdutoesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710012101126_AddLogDataTable.resx">
+      <DependentUpon>201710012101126_AddLogDataTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
