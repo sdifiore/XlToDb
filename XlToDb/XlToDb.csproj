@@ -68,7 +68,9 @@
     <Compile Include="Model\Area.cs" />
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\ClasseCusto.cs" />
+    <Compile Include="Model\Cotacao.cs" />
     <Compile Include="Model\CustoFolha.cs" />
+    <Compile Include="Model\Dominio.cs" />
     <Compile Include="Model\Estrutura.cs" />
     <Compile Include="Model\Files.cs" />
     <Compile Include="Model\Finalidade.cs" />
@@ -79,12 +81,15 @@
     <Compile Include="Model\Familia.cs" />
     <Compile Include="Model\LogData.cs" />
     <Compile Include="Model\Operacao.cs" />
+    <Compile Include="Model\ParteProduto.cs" />
+    <Compile Include="Model\Pcp.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Model\QtdEmbalagem.cs" />
     <Compile Include="Model\Reason.cs" />
     <Compile Include="Model\Sequencia.cs" />
     <Compile Include="Model\Setor.cs" />
     <Compile Include="Model\Tipo.cs" />
+    <Compile Include="Model\TipoProducao.cs" />
     <Compile Include="Model\Unidade.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

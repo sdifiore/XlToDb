@@ -12,41 +12,37 @@ namespace XlToDb.Model
         [Display(Name = "Código")]
         public string Apelido { get; set; }
 
-        [StringLength(100)]
-        [Display(Name = "Descrição")]
-        public string Descricao { get; set; }
-
-        public int UnidadeId { get; set; }
-
-        public Unidade Unidade { get; set; }
-
-        public int TipoId { get; set; }
-
-        public Tipo Tipo { get; set; }
-
-        public int ClasseCustoId { get; set; }
-
-        public ClasseCusto ClasseCusto { get; set; }
-
-        public int CategoriaId { get; set; }
-
-        public Categoria Categoria { get; set; }
-
-        public int FamiliaId { get; set; } //
-
-        public Familia Familia { get; set; }
-
-        public int LinhaId { get; set; } //
-
-        public Linha Linha { get; set; }
-
         [Display(Name = "Peso")]
         public float Peso { get; set; }
 
-        public float QuantidadeCusto { get; set; }
+        [Display(Name = "Última atualização")]
+        public int CotacaoId { get; set; }
+
+        public Cotacao Cotacao { get; set; }
+
+        [Display(Name = "Preço USD")]
+        public float PrecoUsd { get; set; }
+
+        [Display(Name = "ICMS")]
+        public float Icms { get; set; }
+
+        [Display(Name = "IPI")]
+        public float Ipi { get; set; }
+
+        [Display(Name = "PIS")]
+        public float Pis { get; set; }
+
+        [Display(Name = "Cofins")]
+        public float Cofins { get; set; }
+
+        [Display(Name = "Despesas Extras")]
+        public float DespExtra { get; set; }
+
+        [Display(Name = "II + Desp. Importação")]
+        public float DespImport { get; set; }
 
         [Display(Name = "Ativo")]
-        public bool Status { get; set; }
+        public bool Ativo { get; set; }
 
         [Display(Name = "Finalidade")]
         public int FinalidadeId { get; set; }
@@ -64,5 +60,10 @@ namespace XlToDb.Model
 
         [Display(Name = "Quantidade Múltiplo Compra")]
         public float QtdMltplCompra { get; set; }
+
+        [ForeignKey("Produto")]
+        public int ProdutoId { get; set; }
+
+        public Produto Produto { get; set; }
     }
 }

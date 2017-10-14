@@ -26,5 +26,9 @@ namespace XlToDb.Model
         public DbSet<QtdEmbalagem> QtdEmbalagems { get; set; }
         public DbSet<Finalidade> Finalidades { get; set; }
         public DbSet<Insumo> Insumos { get; set; }
+        public DbSet<Dominio> Dominios { get; set; }
+        public DbSet<ParteProduto> ParteProdutos { get; set; }
+        public DbSet<Cotacao> Cotacoes { get; set; }
+
     }
 }

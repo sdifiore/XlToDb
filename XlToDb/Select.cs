@@ -99,9 +99,8 @@ namespace XlToDb
             return 12;
         }
 
-        public static int GrupoRateio(string celula, int tab)
+        public static int GrupoRateio(string celula)
         {
-            if (tab == 3) return 17;
             if (celula == "fita") return 9;
             if (celula == "graxa") return 10;
             if (celula == "gxfpuro") return 11;
@@ -159,6 +158,39 @@ namespace XlToDb
             var medida = db.MedidaFitas.SingleOrDefault(m => m.LarguraMm == larg && m.ComprimentoMetros == comp);
             if (medida == null) return 1;
             return medida.MedidaFitaId;
+        }
+
+        public static bool Status(string celula)
+        {
+            if (celula.ToLower() == "ativo") return true;
+            return false;
+        }
+
+        public static int Dominio(string celula)
+        {
+            var db = new EntityContext();
+            var dominio = celula.Substring(2, celula.Length - 2).ToLower();
+            var resposta = db.Dominios.SingleOrDefault(d => d.Descricao == dominio);
+            if (resposta == null) return 1;
+            return resposta.DominioId;
+        }
+
+        public static int TipoProducao(string celula)
+        {
+            return celula == "IND" ? 1 : 2;
+        }
+
+        public static int Pcp(string celula)
+        {
+            return celula == "PE" ? 1 : 2;
+        }
+
+        public static int Produto(string celula)
+        {
+            var db = new EntityContext();
+            var resposta = db.Produtos.SingleOrDefault(p => p.Apelido == celula);
+            if (resposta == null) return 4642;
+            return resposta.Id;
         }
     }
 }
