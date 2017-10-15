@@ -24,7 +24,7 @@ namespace XlToDb
                     {
                         string apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null
                             ? range.Cells[i, 1].Value2.ToString()
-                            : "0000000000";
+                            : "999999";
                         var teste = db.Produtos.Find(apelido);
 
                         if (teste == null)
@@ -139,28 +139,21 @@ namespace XlToDb
             {
                 for (int i = 2; i < range.Rows.Count + 1; i++)
                 {
-                    int produtoId;
-                    Produto produto;
-
-                    if (range.Cells[i, 6] == null || range.Cells[i, 6].Value2 == null) produtoId = 1637;
-                    else
-                    {
-                        string celula = range.Cells[i, 6].Value2.ToString();
-                        produto = db.Produtos.FirstOrDefault(p => p.Apelido == celula);
-                        if (produto == null) produtoId = 1637;
-                        else produtoId = produto.Id;
-                    }
 
                     var data = new Estrutura
                     {
-                        Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "0000000000",
-                        ProdutoId = produtoId,
+                        Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "999999",
+                        UnidadeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8,
+                        QtdCusto = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? (float)range.Cells[i, 4].Value2 : 0,
+                        SequenciaId = range.Cells[i, 5] != null && range.Cells[i, 5].Value2 != null ? Select.Sequencia(range.Cells[i, 5].Value2.ToString()) : 9,
+                        Item = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? range.Cells[i, 6].Value2.ToString() : "999999",
                         Onera = range.Cells[i, 10] != null && range.Cells[i, 10].Value2 != null ? Select.Onera(range.Cells[i, 10].Value2.ToString()) : false,
+                        Lote = range.Cells[i, 11] != null && range.Cells[i, 11].Value2 != null ? (float)range.Cells[i, 11].Value2 : 0,
+                        Perda = range.Cells[i, 12] != null && range.Cells[i, 12].Value2 != null ? (float)range.Cells[i, 12].Value2 : 0,
                         Observacao = range.Cells[i, 13] != null && range.Cells[i, 13].Value2 != null ? range.Cells[i, 13].Value2.ToString() : "--",
-                        SequenciaId = range.Cells[i, 5] != null && range.Cells[i, 5].Value2 != null ? Select.Sequencia(range.Cells[i, 5].Value2.ToString()) : 9
+
                     };
 
-                    Console.WriteLine(i);
                     db.Estruturas.Add(data);
                     db.SaveChanges();
                     Console.WriteLine(i);
@@ -194,7 +187,7 @@ namespace XlToDb
                 {
                     var operacao = new Operacao
                     {
-                        CodigoOperacao = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "0000000000",
+                        CodigoOperacao = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "999999",
                         SetorProducao = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null ? range.Cells[i, 2].Value2.ToString() : "--",
                         Descricao = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? range.Cells[i, 3].Value2.ToString() : "--",
                         TaxaOcupacao = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? (float)range.Cells[i, 4].Value2 : 0,
@@ -347,7 +340,7 @@ namespace XlToDb
                         DateTime = DateTime.Now,
                         Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null
                             ? range.Cells[i, 1].Value2.ToString()
-                            : "0000000000",
+                            : "999999",
                         Descricao = range.Cells[i, 10] != null && range.Cells[i, 10].Value2 != null
                             ? range.Cells[i, 10].Value2.ToString()
                             : "--",
@@ -383,14 +376,76 @@ namespace XlToDb
             Excel._Worksheet worksheet = workbook.Sheets[2];
             Excel.Range range = worksheet.UsedRange;
 
-            for (int i = 2; i < range.Rows.Count + 1; i++)
+            try
             {
-                var data = new Insumo
+                for (int i = 2; i < range.Rows.Count + 1; i++)
                 {
+                    int j = 10;
+                    var data = new Insumo
+                    {
+                        Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "999999",
+                        ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642,
+                        Peso = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null ? (float)range.Cells[i, 9].Value2 : 0,
+                        CotacaoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Cotacao(range.Cells[i, 1].Value2.ToString()) : 5032,
+                        PrecoUsd = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        PrecoRs = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        Icms = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        Ipi = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        Pis = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        Cofins = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        DespExtra = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        DespImport = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        Ativo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Status(range.Cells[i, j].Value2.ToString()) : false,
+                        FinalidadeId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Finalidade(range.Cells[i, j].Value2.ToString()) : 4,
+                        UnddId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Unidade(range.Cells[i, j].Value2.ToString()) : 8,
+                        QtdUnddConsumo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        QtdMltplCompra = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0
+                    };
 
-                };
+                    db.Insumos.Add(data);
+                    db.SaveChanges();
+                    Console.WriteLine(i);
+                }
             }
+            catch (Exception ex)
+            {
+                DbLogger.Log(Reason.Error, ex.Message);
+            }
+            finally
+            {
+                xlApp.Quit();
+                workbook = null;
+                worksheet = null;
+                range = null;
+            }
+        }
 
+        public void Alteracao()
+        {
+            var db = new EntityContext();
+
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Alteracao);
+            Excel._Worksheet worksheet = workbook.Sheets[7];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 2; i < 122; i++)
+            {
+                var data = new Ajuste
+                {
+                    OrigemId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642,
+                    UnidadeDeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8,
+                    AtualId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? Select.Produto(range.Cells[i, 4].Value2.ToString()) : 4642,
+                    UnidadeParaId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? Select.Unidade(range.Cells[i, 6].Value2.ToString()) : 8,
+                    Fator = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? (float)range.Cells[i, 7].Value2 : 0,
+                    TipoAlteracaoId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.TipoAlteracao(range.Cells[i, 8].Value2.ToString()) : 4,
+                    Medida = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null ? (float)range.Cells[i, 9].Value2 : 0
+                };
+
+                db.Ajustes.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
         }
     }
 }

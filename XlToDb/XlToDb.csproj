@@ -65,6 +65,7 @@
       <DependentUpon>201710012101126_AddLogDataTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Ajuste.cs" />
     <Compile Include="Model\Area.cs" />
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\ClasseCusto.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Model\Sequencia.cs" />
     <Compile Include="Model\Setor.cs" />
     <Compile Include="Model\Tipo.cs" />
+    <Compile Include="Model\TipoAlteracao.cs" />
     <Compile Include="Model\TipoProducao.cs" />
     <Compile Include="Model\Unidade.cs" />
     <Compile Include="Program.cs" />

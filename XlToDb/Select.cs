@@ -192,5 +192,29 @@ namespace XlToDb
             if (resposta == null) return 4642;
             return resposta.Id;
         }
+
+        public static int Cotacao(string celula)
+        {
+            var db = new EntityContext();
+            var resposta = db.Cotacoes.SingleOrDefault(c => c.Apelido == celula);
+            if (resposta == null) return 5032;
+            return resposta.CotacaoId;
+        }
+
+        public static int Finalidade(string celula)
+        {
+            var db = new EntityContext();
+            var resposta = db.Finalidades.SingleOrDefault(c => c.Descricao == celula);
+            if (resposta == null) return 4;
+            return resposta.FinalidadeId;
+        }
+
+        public static int TipoAlteracao(string celula)
+        {
+            var db = new EntityContext();
+            var resposta = db.TiposAlteracao.SingleOrDefault(c => c.Descricao == celula);
+            if (resposta == null) return 4;
+            return resposta.TipoAlteracaoId;
+        }
     }
 }

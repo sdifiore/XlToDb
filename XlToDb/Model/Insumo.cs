@@ -23,6 +23,9 @@ namespace XlToDb.Model
         [Display(Name = "Preço USD")]
         public float PrecoUsd { get; set; }
 
+        [Display(Name = "Preço Fixado R$")]
+        public float PrecoRs { get; set; }
+
         [Display(Name = "ICMS")]
         public float Icms { get; set; }
 

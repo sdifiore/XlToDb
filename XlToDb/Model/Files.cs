@@ -18,5 +18,6 @@ namespace XlToDb.Model
         public const string AreaFita = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\PdFitas.xlsx";
         public const string ParteProduto = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Estrutura.xlsx";
         public const string Cotacao = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Estrutura.xlsx";
+        public const string Alteracao = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_1.Estrutura.xlsm";
     }
 }

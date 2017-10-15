@@ -29,6 +29,7 @@ namespace XlToDb.Model
         public DbSet<Dominio> Dominios { get; set; }
         public DbSet<ParteProduto> ParteProdutos { get; set; }
         public DbSet<Cotacao> Cotacoes { get; set; }
-
+        public DbSet<Ajuste> Ajustes { get; set; }
+        public DbSet<TipoAlteracao> TiposAlteracao { get; set; }
     }
 }

@@ -13,7 +13,9 @@ namespace XlToDb
             //xl.Folha();
             //xl.QtdEmbalagem();
             //xl.ParteProduto();
-            xl.Cotacao();
+            //xl.Cotacao();
+            //xl.Insumo();
+            xl.Alteracao();
         }
     }
 }
