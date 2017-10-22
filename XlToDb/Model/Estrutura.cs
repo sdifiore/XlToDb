@@ -38,5 +38,9 @@ namespace XlToDb.Model
 
         [Display(Name = "Observação")]
         public string Observacao { get; set; }
+
+        public int ProdutoId { get; set; }
+
+        public Produto Produto { get; set; }
     }
 }

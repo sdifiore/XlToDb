@@ -151,7 +151,7 @@ namespace XlToDb
                         Lote = range.Cells[i, 11] != null && range.Cells[i, 11].Value2 != null ? (float)range.Cells[i, 11].Value2 : 0,
                         Perda = range.Cells[i, 12] != null && range.Cells[i, 12].Value2 != null ? (float)range.Cells[i, 12].Value2 : 0,
                         Observacao = range.Cells[i, 13] != null && range.Cells[i, 13].Value2 != null ? range.Cells[i, 13].Value2.ToString() : "--",
-
+                        ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642
                     };
 
                     db.Estruturas.Add(data);
@@ -159,7 +159,7 @@ namespace XlToDb
                     Console.WriteLine(i);
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
                 DbLogger.Log(Reason.Error, ex.Message);
             }
@@ -430,19 +430,53 @@ namespace XlToDb
             Excel.Range range = worksheet.UsedRange;
 
             for (int i = 2; i < 122; i++)
-            {
-                var data = new Ajuste
+                try
                 {
-                    OrigemId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642,
-                    UnidadeDeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8,
-                    AtualId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? Select.Produto(range.Cells[i, 4].Value2.ToString()) : 4642,
-                    UnidadeParaId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? Select.Unidade(range.Cells[i, 6].Value2.ToString()) : 8,
-                    Fator = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? (float)range.Cells[i, 7].Value2 : 0,
-                    TipoAlteracaoId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.TipoAlteracao(range.Cells[i, 8].Value2.ToString()) : 4,
-                    Medida = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null ? (float)range.Cells[i, 9].Value2 : 0
-                };
+                    {
+                        var data = new Ajuste
+                        {
+                            OrigemId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642,
+                            UnidadeDeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8,
+                            AtualId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? Select.Produto(range.Cells[i, 4].Value2.ToString()) : 4642,
+                            UnidadeParaId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? Select.Unidade(range.Cells[i, 6].Value2.ToString()) : 8,
+                            Fator = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? (float)range.Cells[i, 7].Value2 : 0,
+                            TipoAlteracaoId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.TipoAlteracao(range.Cells[i, 8].Value2.ToString()) : 4,
+                            Medida = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null ? (float)range.Cells[i, 9].Value2 : 0
+                        };
 
-                db.Ajustes.Add(data);
+                        db.Ajustes.Add(data);
+                        db.SaveChanges();
+                        Console.WriteLine(i);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    DbLogger.Log(Reason.Error, ex.Message);
+                }
+                finally
+                {
+                    xlApp.Quit();
+                    workbook = null;
+                    worksheet = null;
+                    range = null;
+                }
+        }
+
+        public void UpdateTipo()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Produtos);
+            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 2; i < range.Count + 1; i++)
+            {
+                string comp = range.Cells[i, 1].Value2.ToString();
+                var data = db.Produtos.Single(p => p.Apelido == comp);
+                data.TipoId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null
+                    ? Select.Tipo(range.Cells[i, 4].Value2.ToString())
+                    : 4;
                 db.SaveChanges();
                 Console.WriteLine(i);
             }

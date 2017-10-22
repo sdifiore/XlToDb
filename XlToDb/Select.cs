@@ -22,7 +22,7 @@ namespace XlToDb
 
         public static int Tipo(string celula)
         {
-            var comp = celula.Substring(0, 2).ToLower();
+            var comp = celula.Substring(0, 1).ToLower();
 
             if (comp == "a") return 1;
             if (comp == "b") return 2;

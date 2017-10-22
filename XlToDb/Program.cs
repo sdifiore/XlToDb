@@ -15,7 +15,8 @@ namespace XlToDb
             //xl.ParteProduto();
             //xl.Cotacao();
             //xl.Insumo();
-            xl.Alteracao();
+            //xl.Alteracao();
+            xl.UpdateTipo();
         }
     }
 }
