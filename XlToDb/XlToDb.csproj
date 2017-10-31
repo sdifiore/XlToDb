@@ -67,6 +67,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Ajuste.cs" />
     <Compile Include="Model\Area.cs" />
+    <Compile Include="Model\Base.cs" />
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\ClasseCusto.cs" />
     <Compile Include="Model\Cotacao.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Model\Finalidade.cs" />
     <Compile Include="Model\GrupoRateio.cs" />
     <Compile Include="Model\Insumo.cs" />
+    <Compile Include="Model\InsumoXtd.cs" />
     <Compile Include="Model\Linha.cs" />
     <Compile Include="Model\EntityContext.cs" />
     <Compile Include="Model\Familia.cs" />

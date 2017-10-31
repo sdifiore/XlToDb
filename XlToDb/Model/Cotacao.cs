@@ -11,10 +11,6 @@ namespace XlToDb.Model
         [Display(Name = "Data")]
         public DateTime DateTime { get; set; }
 
-        [StringLength(10)]
-        [Display(Name = "Item")]
-        public string Apelido { get; set; }
-
         [StringLength(256)]
         [Display(Name = "Cotação")]
         public string Descricao { get; set; }

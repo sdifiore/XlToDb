@@ -37,6 +37,7 @@ namespace XlToDb
             if (comp == "00") return 1;
             if (comp == "01") return 2;
             if (comp == "02") return 3;
+            if (comp == "04") return 10;
             if (comp == "06") return 4;
             if (comp == "07") return 5;
             if (comp == "10") return 6;
@@ -46,61 +47,40 @@ namespace XlToDb
 
         public static int Categoria(string celula)
         {
+            var db = new EntityContext();
             var comp = celula.Substring(0, 2);
 
-            if (comp == "20") return 1;
-            if (comp == "50") return 2;
-            if (comp == "51") return 3;
-            if (comp == "52") return 4;
-            if (comp == "60") return 5;
-            if (comp == "61") return 6;
-            if (comp == "71") return 7;
-            if (comp == "82") return 8;
-            if (comp == "91") return 9;
-
-            return 12;
+            var result = db.Categorias.SingleOrDefault(c => c.Apelido == comp);
+            if (result == null) return 12;
+            return result.CategoriaId;
         }
 
         public static int Familia(string celula)
         {
             var comp = celula.Substring(0, 3);
+            var db = new EntityContext();
 
-            if (comp == "201") return 1;
-            if (comp == "501") return 2;
-            if (comp == "502") return 2;
-            if (comp == "503") return 4;
-            if (comp == "511") return 5;
-            if (comp == "512") return 6;
-            if (comp == "601") return 7;
-            if (comp == "602") return 8;
-            if (comp == "606") return 9;
-            if (comp == "607") return 10;
-            if (comp == "610") return 11;
-            if (comp == "611") return 12;
-            if (comp == "613") return 13;
+            var result = db.Familias.SingleOrDefault(c => c.Apelido == comp);
+            if (result == null) return 15;
 
-            return 15;
+            return result.FamiliaId;
         }
 
         public static int Linha(string celula)
         {
+            var db = new EntityContext();
             var comp = celula.Substring(0, 4);
 
-            if (comp == "1015") return 1;
-            if (comp == "1021") return 2;
-            if (comp == "1024") return 3;
-            if (comp == "1025") return 4;
-            if (comp == "2112") return 5;
-            if (comp == "2113") return 6;
-            if (comp == "2114") return 7;
-            if (comp == "2115") return 8;
-            if (comp == "5011") return 9;
+            var result = db.Linhas.SingleOrDefault(c => c.Apelido == comp);
+            if (result == null) return 15;
 
-            return 12;
+            return result.LinhaId;
         }
 
         public static int GrupoRateio(string celula)
         {
+            celula = celula.ToLower();
+
             if (celula == "fita") return 9;
             if (celula == "graxa") return 10;
             if (celula == "gxfpuro") return 11;
@@ -188,18 +168,19 @@ namespace XlToDb
         public static int Produto(string celula)
         {
             var db = new EntityContext();
-            var resposta = db.Produtos.SingleOrDefault(p => p.Apelido == celula);
-            if (resposta == null) return 4642;
+            var resposta = db.Produtos.FirstOrDefault(p => p.Apelido == celula);
+            int i = 0;
+            if (resposta == null) return 14844;
             return resposta.Id;
         }
 
-        public static int Cotacao(string celula)
-        {
-            var db = new EntityContext();
-            var resposta = db.Cotacoes.SingleOrDefault(c => c.Apelido == celula);
-            if (resposta == null) return 5032;
-            return resposta.CotacaoId;
-        }
+        //public static int Cotacao(string celula)
+        //{
+        //    var db = new EntityContext();
+        //    var resposta = db.Cotacoes.SingleOrDefault(c => c.Apelido == celula);
+        //    if (resposta == null) return 5032;
+        //    return resposta.CotacaoId;
+        //}
 
         public static int Finalidade(string celula)
         {

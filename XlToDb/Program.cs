@@ -8,15 +8,17 @@ namespace XlToDb
         {
             var xl = new ExcelDb();
             //xl.Produto();
-            //xl.Estrutura();
+            //xl.Perdas();
+            //xl.QtdLoteComp();
             //xl.Operacao();
             //xl.Folha();
             //xl.QtdEmbalagem();
             //xl.ParteProduto();
             //xl.Cotacao();
-            //xl.Insumo();
             //xl.Alteracao();
-            xl.UpdateTipo();
+            //xl.UpdateTipo();
+            //xl.Insumo();
+            xl.Estrutura();
         }
     }
 }
