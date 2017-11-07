@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Ajuste.cs" />
+    <Compile Include="Model\AjusteProduto.cs" />
     <Compile Include="Model\Area.cs" />
     <Compile Include="Model\Base.cs" />
     <Compile Include="Model\Categoria.cs" />
@@ -73,9 +74,12 @@
     <Compile Include="Model\Cotacao.cs" />
     <Compile Include="Model\CustoFolha.cs" />
     <Compile Include="Model\Dominio.cs" />
+    <Compile Include="Model\Embalagem.cs" />
+    <Compile Include="Model\EncapTubo.cs" />
     <Compile Include="Model\Estrutura.cs" />
     <Compile Include="Model\Files.cs" />
     <Compile Include="Model\Finalidade.cs" />
+    <Compile Include="Model\Graxa.cs" />
     <Compile Include="Model\GrupoRateio.cs" />
     <Compile Include="Model\Insumo.cs" />
     <Compile Include="Model\InsumoXtd.cs" />
@@ -89,6 +93,7 @@
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Model\QtdEmbalagem.cs" />
     <Compile Include="Model\Reason.cs" />
+    <Compile Include="Model\Resina.cs" />
     <Compile Include="Model\Sequencia.cs" />
     <Compile Include="Model\Setor.cs" />
     <Compile Include="Model\Tipo.cs" />

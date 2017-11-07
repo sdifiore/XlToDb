@@ -19,5 +19,8 @@ namespace XlToDb.Model
         public const string ParteProduto = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Estrutura.xlsx";
         public const string Cotacao = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Estrutura.xlsx";
         public const string Alteracao = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_1.Estrutura.xlsm";
+        public const string EncapTubos = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_1.Estrutura.xlsm";
+        public const string Graxas = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_1.Estrutura.xlsm";
+        public const string AjusteProduto = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_2.Orçamento.xlsm";
     }
 }

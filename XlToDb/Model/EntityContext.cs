@@ -33,5 +33,13 @@ namespace XlToDb.Model
         public DbSet<Cotacao> Cotacoes { get; set; }
         public DbSet<Ajuste> Ajustes { get; set; }
         public DbSet<TipoAlteracao> TiposAlteracao { get; set; }
+        public DbSet<EncapTubo> EncapTubos { get; set; }
+        public DbSet<Graxa> Graxas { get; set; }
+        public DbSet<Embalagem> Embalagens { get; set; }
+        public DbSet<Resina> Resinas { get; set; }
+        public DbSet<AjusteProduto> AjusteProdutos { get; set; }
+
+
+
     }
 }

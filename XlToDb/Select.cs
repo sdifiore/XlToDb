@@ -197,5 +197,28 @@ namespace XlToDb
             if (resposta == null) return 4;
             return resposta.TipoAlteracaoId;
         }
+
+        public static int Embalagem(string celula)
+        {
+            var db = new EntityContext();
+            var embalagem = db.Embalagens.SingleOrDefault(e => e.Descricao == celula);
+            int result = embalagem == null ? 9 : embalagem.Id;
+
+            return result;
+        }
+
+        public static int Resina(string celula)
+        {
+            var db = new EntityContext();
+            var resina = db.Resinas.SingleOrDefault(r => r.Descricao == celula);
+            int result = resina == null ? 3 : resina.Id;
+
+            return result;
+        }
+
+        public static int MedidaFita(string celula)
+        {
+
+        }
     }
 }

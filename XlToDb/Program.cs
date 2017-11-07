@@ -18,7 +18,9 @@ namespace XlToDb
             //xl.Alteracao();
             //xl.UpdateTipo();
             //xl.Insumo();
-            xl.Estrutura();
+            //xl.Estrutura();
+            //xl.EncapTubos();
+            xl.Graxas();
         }
     }
 }

@@ -483,36 +483,22 @@ namespace XlToDb
             Excel.Range range = worksheet.UsedRange;
 
             for (int i = 2; i < 122; i++)
-                try
+            {
+                var data = new Ajuste
                 {
-                    {
-                        var data = new Ajuste
-                        {
-                            OrigemId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642,
-                            UnidadeDeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8,
-                            AtualId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? Select.Produto(range.Cells[i, 4].Value2.ToString()) : 4642,
-                            UnidadeParaId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? Select.Unidade(range.Cells[i, 6].Value2.ToString()) : 8,
-                            Fator = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? (float)range.Cells[i, 7].Value2 : 0,
-                            TipoAlteracaoId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.TipoAlteracao(range.Cells[i, 8].Value2.ToString()) : 4,
-                            Medida = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null ? (float)range.Cells[i, 9].Value2 : 0
-                        };
+                    OrigemId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642,
+                    UnidadeDeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8,
+                    AtualId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? Select.Produto(range.Cells[i, 4].Value2.ToString()) : 4642,
+                    UnidadeParaId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? Select.Unidade(range.Cells[i, 6].Value2.ToString()) : 8,
+                    Fator = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? (float)range.Cells[i, 7].Value2 : 0,
+                    TipoAlteracaoId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.TipoAlteracao(range.Cells[i, 8].Value2.ToString()) : 4,
+                    Medida = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null ? (float)range.Cells[i, 9].Value2 : 0
+                };
 
-                        db.Ajustes.Add(data);
-                        db.SaveChanges();
-                        Console.WriteLine(i);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    DbLogger.Log(Reason.Error, ex.Message);
-                }
-                finally
-                {
-                    xlApp.Quit();
-                    workbook = null;
-                    worksheet = null;
-                    range = null;
-                }
+                db.Ajustes.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
         }
 
         public void UpdateTipo()
@@ -532,6 +518,83 @@ namespace XlToDb
                     : 4;
                 db.SaveChanges();
                 Console.WriteLine(i);
+            }
+        }
+
+        public void EncapTubos()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.EncapTubos);
+            Excel._Worksheet worksheet = workbook.Sheets[12];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 2; i < 9; i++)
+            {
+                int j = 2;
+                var data = new EncapTubo();
+
+                data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642;
+                data.UnidadeId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Unidade(range.Cells[i, j].Value2.ToString()) : 8;
+                data.DextRevest = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.DintRevest = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.ResinaBase = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.Aditivo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.DenRev = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.PesoRevest = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.VelRevest = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.PctCarga = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                
+
+                db.EncapTubos.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
+        }
+
+        public void Graxas()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Graxas);
+            Excel._Worksheet worksheet = workbook.Sheets[11];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 3; i < 31; i++)
+            {
+                var data = new Graxa();
+
+                data.Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "999999";
+                data.Descricao = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null ? range.Cells[i, 2].Value2.ToString() : "--";
+                data.EmbalagemId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Embalagem(range.Cells[i, 3].Value2.ToString()) : 9;
+                data.Peso = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? (float)range.Cells[i, 4].Value2 : 0;
+                data.PctSilicone = range.Cells[i, 5] != null && range.Cells[i, 5].Value2 != null ? (float)range.Cells[i, 5].Value2 : 0;
+                data.PctSilica = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? (float)range.Cells[i, 6].Value2 : 0;
+                data.ResinaId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.Resina(range.Cells[i, 8].Value2.ToString()) : 3;
+                data.EmbalagemMedida = range.Cells[i, 11] != null && range.Cells[i, 11].Value2 != null ? (float)range.Cells[i, 11].Value2 : 0;
+                data.Rotulagem = range.Cells[i, 12] != null && range.Cells[i, 12].Value2 != null ? (float)range.Cells[i, 12].Value2 : 0;
+
+                db.Graxas.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
+        }
+
+        public void AjusteProdutos()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.AjusteProduto);
+            Excel._Worksheet worksheet = workbook.Sheets[6];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 1; i < range.Rows.Count + 1; i++)
+            {
+                var data = new AjusteProduto
+                {
+                    ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642,
+                    MedidaFitaId = range.Cells[i, 31] != null && range.Cells[i, 31].Value2 != null ? Select.MedidaFita(range.Cells[i, 31].Value2.ToString()) : 32
+                };
             }
         }
     }
