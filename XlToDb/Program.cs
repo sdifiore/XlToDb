@@ -20,7 +20,10 @@ namespace XlToDb
             //xl.Insumo();
             //xl.Estrutura();
             //xl.EncapTubos();
-            xl.Graxas();
+            //xl.AjusteProdutos();
+            //xl.PadraoFixo();
+            xl.ResinaPtfe();
+
         }
     }
 }

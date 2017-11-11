@@ -12,6 +12,7 @@ namespace XlToDb.Model
         public DbSet<Base> Bases { get; set; }
         public DbSet<ClasseCusto> ClassesCusto { get; set; }
         public DbSet<Familia> Familias { get; set; }
+        public DbSet<Fabricante> Fabricantes { get; set; }
         public DbSet<GrupoRateio> GruposRateio { get; set; }
         public DbSet<Linha> Linhas { get; set; }
         public DbSet<LogData> LogData { get; set; }
@@ -37,6 +38,11 @@ namespace XlToDb.Model
         public DbSet<Graxa> Graxas { get; set; }
         public DbSet<Embalagem> Embalagens { get; set; }
         public DbSet<Resina> Resinas { get; set; }
+        public DbSet<ResinaPtfe> ResinasPtfe { get; set; }
+        public DbSet<PreForma> PreFormas { get; set; }
+        public DbSet<Extrusora> Extrusoras { get; set; }
+        public DbSet<PrensaPreForma> PrensasPreForma { get; set; }
+        public DbSet<PadraoFixo> PadroesFixos { get; set; }
         public DbSet<AjusteProduto> AjusteProdutos { get; set; }
 
 

@@ -77,6 +77,8 @@
     <Compile Include="Model\Embalagem.cs" />
     <Compile Include="Model\EncapTubo.cs" />
     <Compile Include="Model\Estrutura.cs" />
+    <Compile Include="Model\Extrusora.cs" />
+    <Compile Include="Model\Fabricante.cs" />
     <Compile Include="Model\Files.cs" />
     <Compile Include="Model\Finalidade.cs" />
     <Compile Include="Model\Graxa.cs" />
@@ -87,13 +89,18 @@
     <Compile Include="Model\EntityContext.cs" />
     <Compile Include="Model\Familia.cs" />
     <Compile Include="Model\LogData.cs" />
+    <Compile Include="Model\MedidaFita.cs" />
     <Compile Include="Model\Operacao.cs" />
+    <Compile Include="Model\PadraoFixo.cs" />
     <Compile Include="Model\ParteProduto.cs" />
     <Compile Include="Model\Pcp.cs" />
+    <Compile Include="Model\PreForma.cs" />
+    <Compile Include="Model\PrensaPreForma.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Model\QtdEmbalagem.cs" />
     <Compile Include="Model\Reason.cs" />
     <Compile Include="Model\Resina.cs" />
+    <Compile Include="Model\ResinaPtfe.cs" />
     <Compile Include="Model\Sequencia.cs" />
     <Compile Include="Model\Setor.cs" />
     <Compile Include="Model\Tipo.cs" />

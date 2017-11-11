@@ -74,6 +74,7 @@ namespace XlToDb
                         ? Select.Pcp(range.Cells[i, j].Value2.ToString())
                         : 1;
                     data.QtUnPorUnArmz = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0 ;
+                    data.MedidaFitaId = 32;
 
                     db.Produtos.Add(data);
                     db.SaveChanges();
@@ -588,13 +589,96 @@ namespace XlToDb
             Excel._Worksheet worksheet = workbook.Sheets[6];
             Excel.Range range = worksheet.UsedRange;
 
-            for (int i = 1; i < range.Rows.Count + 1; i++)
+            for (int i = 2; i < range.Rows.Count + 1; i++)
             {
-                var data = new AjusteProduto
+                int id = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 14844;
+                var data = db.Produtos.SingleOrDefault(p => p.Id == id);
+                if (data != null)
                 {
-                    ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642,
-                    MedidaFitaId = range.Cells[i, 31] != null && range.Cells[i, 31].Value2 != null ? Select.MedidaFita(range.Cells[i, 31].Value2.ToString()) : 32
+                    data.MedidaFitaId = range.Cells[i, 31] != null && range.Cells[i, 31].Value2 != null ? Select.MedidaFita(range.Cells[i, 31].Value2.ToString()) : 32;
+                }
+
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
+        }
+
+        public void PadraoFixo()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PadraoFixo);
+            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 3; i < 38; i++)
+            {
+                var data = new PadraoFixo
+                {
+                    Descricao = range.Cells[i, 17] != null && range.Cells[i, 17].Value2 != null ? range.Cells[i, 17].Value2.ToString() : "--",
+                    Valor = range.Cells[i, 18] != null && range.Cells[i, 18].Value2 != null ? (float)range.Cells[i, 18].Value2 : 0
                 };
+
+                db.PadroesFixos.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
+        }
+
+        public void PreForma()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PreForma);
+            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 3; i < 11; i++)
+            {
+                int j = 0;
+                var data = new PreForma();
+                data.PreFormaNum = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.FormaDiamE = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.VaretaDiamI = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.Medidas = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.Comprimento = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.Tup = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.PrensaPreFormaId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Prensa(range.Cells[i, j].Value2.ToString()) : 4;
+                data.Preparo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.TrocaPf = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.ExtrusoraId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Extrusora(range.Cells[i, j].Value2.ToString()) : 3;
+                data.DiamPistaoHidraulico = range.Cells[i, 14] != null && range.Cells[i, 14].Value2 != null ? (float)range.Cells[i, 14].Value2 : 0;
+
+                db.PreFormas.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
+        }
+
+        public void ResinaPtfe()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Resina);
+            Excel._Worksheet worksheet = workbook.Sheets[1];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 2; i < range.Rows.Count + 1; i++)
+            {
+                int j = 0;
+                var data = new ResinaPtfe();
+                data.Ref = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.Referencia = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.FabricanteId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Fabricante(range.Cells[i, j].Value2.ToString()) : 5;
+                data.Tipo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.InsumoId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Insumo(range.Cells[i, j].Value2.ToString()) : 2450;
+                data.MaxRr = range.Cells[i, 12] != null && range.Cells[i, 12].Value2 != null ? (int)range.Cells[i, 12].Value2 : 0;
+                data.Classificacao = range.Cells[i, 13] != null && range.Cells[i, 13].Value2 != null ? range.Cells[i, 13].Value2.ToString() : "--";
+                data.MaxRrAntiga = range.Cells[i, 14] != null && range.Cells[i, 14].Value2 != null ? (int)range.Cells[i, 14].Value2 : 0;
+
+                db.ResinasPtfe.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
             }
         }
     }

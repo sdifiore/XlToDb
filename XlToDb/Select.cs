@@ -218,7 +218,57 @@ namespace XlToDb
 
         public static int MedidaFita(string celula)
         {
+            var db = new EntityContext();
+            var medidaFita = db.MedidaFitas.SingleOrDefault(mf => mf.Apelido == celula);
+            var result = medidaFita == null
+                ? 32
+                : medidaFita.MedidaFitaId;
 
+            return result;
+        }
+
+        public static int Prensa(string celula)
+        {
+            var db = new EntityContext();
+            var prensa = db.PrensasPreForma.SingleOrDefault(p => p.Apelido == celula);
+            var result = prensa == null
+                ? 4
+                : prensa.Id;
+
+            return result;
+        }
+
+        public static int Extrusora(string celula)
+        {
+            var db = new EntityContext();
+            var extrusora = db.Extrusoras.SingleOrDefault(p => p.Apelido == celula);
+            var result = extrusora == null
+                ? 3
+                : extrusora.Id;
+
+            return result;
+        }
+
+        public static int Fabricante(string celula)
+        {
+            var db = new EntityContext();
+            var fabricante = db.Fabricantes.SingleOrDefault(p => p.Apelido == celula);
+            var result = fabricante == null
+                ? 5
+                : fabricante.Id;
+
+            return result;
+        }
+
+        public static int Insumo(string celula)
+        {
+            var db = new EntityContext();
+            var insumo = db.Insumos.SingleOrDefault(p => p.Apelido == celula);
+            var result = insumo == null
+                ? 2450
+                : insumo.InsumoId;
+
+            return result;
         }
     }
 }
