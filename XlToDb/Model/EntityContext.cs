@@ -38,6 +38,7 @@ namespace XlToDb.Model
         public DbSet<Graxa> Graxas { get; set; }
         public DbSet<Embalagem> Embalagens { get; set; }
         public DbSet<Resina> Resinas { get; set; }
+        public DbSet<ResinaBase> ResinasBase { get; set; }
         public DbSet<ResinaPtfe> ResinasPtfe { get; set; }
         public DbSet<PreForma> PreFormas { get; set; }
         public DbSet<Extrusora> Extrusoras { get; set; }

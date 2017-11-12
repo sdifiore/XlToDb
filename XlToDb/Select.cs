@@ -270,5 +270,16 @@ namespace XlToDb
 
             return result;
         }
+
+        public static int ResinaBase(string celula)
+        {
+            var db = new EntityContext();
+            var resina = db.ResinasBase.SingleOrDefault(p => p.Apelido == celula);
+            var result = resina == null
+                ? 4
+                : resina.Id;
+
+            return result;
+        }
     }
 }

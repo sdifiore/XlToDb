@@ -17,8 +17,10 @@ namespace XlToDb.Model
 
         public Fabricante Fabricante { get; set; }
 
-        [StringLength(16)]
-        public string Tipo { get; set; }
+        [Display(Name = "Tipo")]
+        public int ResinaBaseId { get; set; }
+
+        public virtual ResinaBase ResinaBase { get; set; }
 
         public int InsumoId { get; set; }
 

@@ -670,7 +670,7 @@ namespace XlToDb
                 data.Ref = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
                 data.Referencia = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
                 data.FabricanteId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Fabricante(range.Cells[i, j].Value2.ToString()) : 5;
-                data.Tipo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.ResinaBaseId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.ResinaBase(range.Cells[i, j].Value2.ToString()) : 4;
                 data.InsumoId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Insumo(range.Cells[i, j].Value2.ToString()) : 2450;
                 data.MaxRr = range.Cells[i, 12] != null && range.Cells[i, 12].Value2 != null ? (int)range.Cells[i, 12].Value2 : 0;
                 data.Classificacao = range.Cells[i, 13] != null && range.Cells[i, 13].Value2 != null ? range.Cells[i, 13].Value2.ToString() : "--";
