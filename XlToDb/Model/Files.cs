@@ -25,5 +25,6 @@ namespace XlToDb.Model
         public const string PadraoFixo = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_6.PPV Tubos.xlsm";
         public const string PreForma = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_6.PPV Tubos.xlsm";
         public const string Resina = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Resinas PTFE.xlsx";
+        public const string ProcTubo = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_6.PPV Tubos.xlsm";
     }
 }

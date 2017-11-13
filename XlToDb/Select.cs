@@ -169,8 +169,7 @@ namespace XlToDb
         {
             var db = new EntityContext();
             var resposta = db.Produtos.FirstOrDefault(p => p.Apelido == celula);
-            int i = 0;
-            if (resposta == null) return 14844;
+            if (resposta == null) return 15871;
             return resposta.Id;
         }
 
@@ -278,6 +277,56 @@ namespace XlToDb
             var result = resina == null
                 ? 4
                 : resina.Id;
+
+            return result;
+        }
+
+        public static int Serie(string celula)
+        {
+            var db = new EntityContext();
+            var serie = db.Series.SingleOrDefault(p => p.Apelido == celula);
+            var result = serie == null
+                ? 17
+                : serie.Id;
+
+            return result;
+        }
+
+        public static int Carga(string celula)
+        {
+            celula = celula.Substring(0, 3);
+            var db = new EntityContext();
+            var carga = db.Cargas.SingleOrDefault(p => p.Apelido == celula);
+            var result = carga == null
+                ? 15
+                : carga.Id;
+
+            return result;
+        }
+
+        public static bool Sinterizado(string celula)
+        {
+            bool result = celula == "SINT"
+                ? true
+                : false;
+
+            return result;
+        }
+
+        public static bool ProcessoContinuo(string celula)
+        {
+            bool result = celula == "1-Continuo"
+                ? true
+                : false;
+
+            return result;
+        }
+
+        public static bool TesteEstqEstoq(string celula)
+        {
+            bool result = celula == "sim"
+                ? true
+                : false;
 
             return result;
         }

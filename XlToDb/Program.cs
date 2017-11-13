@@ -22,7 +22,8 @@ namespace XlToDb
             //xl.EncapTubos();
             //xl.AjusteProdutos();
             //xl.PadraoFixo();
-            xl.ResinaPtfe();
+            //xl.ResinaPtfe();
+            xl.ProcTubo();
 
         }
     }

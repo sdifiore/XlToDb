@@ -681,5 +681,41 @@ namespace XlToDb
                 Console.WriteLine(i);
             }
         }
+
+        public void ProcTubo()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.ProcTubo);
+            Excel._Worksheet worksheet = workbook.Sheets[1];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 2; i < range.Rows.Count + 1; i++)
+            {
+                var data = new ProcTubo();
+
+                data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 15871;
+                data.ResinaBaseId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.ResinaBase(range.Cells[i, 3].Value2.ToString()) : 4;
+                data.DiamExterno = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? (float)range.Cells[i, 4].Value2 : 0;
+                data.DiamInterno = range.Cells[i, 5] != null && range.Cells[i, 5].Value2 != null ? (float)range.Cells[i, 5].Value2 : 0;
+                data.SerieId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? Select.Serie(range.Cells[i, 6].Value2.ToString()) : 17;
+                data.Carga1Id = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? Select.Carga(range.Cells[i, 7].Value2.ToString()) : 15;
+                data.PctCarga1 = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? (float)range.Cells[i, 8].Value2 : 0;
+                data.Carga2Id = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null ? Select.Carga(range.Cells[i, 9].Value2.ToString()) : 15;
+                data.PctCarga2 = range.Cells[i, 10] != null && range.Cells[i, 10].Value2 != null ? (float)range.Cells[i, 10].Value2 : 0;
+                data.Sinterizado = range.Cells[i, 11] != null && range.Cells[i, 11].Value2 != null ? Select.Sinterizado(range.Cells[i, 11].Value2.ToString()) : true;
+                data.FatorMultiplQtde = range.Cells[i, 26] != null && range.Cells[i, 26].Value2 != null ? (int)range.Cells[i, 26].Value2 : 0;
+                data.EmbalagemId = range.Cells[i, 28] != null && range.Cells[i, 28].Value2 != null ? Select.Embalagem(range.Cells[i, 28].Value2.ToString()) : 9;
+                data.QuantEmbalagem = range.Cells[i, 29] != null && range.Cells[i, 29].Value2 != null ? (int)range.Cells[i, 29].Value2 : 0;
+                data.ProcessoContinuo = range.Cells[i, 30] != null && range.Cells[i, 30].Value2 != null ? Select.ProcessoContinuo(range.Cells[i, 30].Value2.ToString()) : true;
+                data.FatorMultiplVExter = range.Cells[i, 32] != null && range.Cells[i, 32].Value2 != null ? (int)range.Cells[i, 32].Value2 : 0;
+                data.FatorMultiplVelSint = range.Cells[i, 34] != null && range.Cells[i, 34].Value2 != null ? (int)range.Cells[i, 34].Value2 : 0;
+                data.TesteEstqEsto = range.Cells[i, 36] != null && range.Cells[i, 36].Value2 != null ? Select.TesteEstqEstoq(range.Cells[i, 36].Value2.ToString()) : true;
+
+                db.ProcTubos.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
+        }
     }
 }
