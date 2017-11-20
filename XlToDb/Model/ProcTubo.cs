@@ -51,10 +51,12 @@ namespace XlToDb.Model
         public bool Sinterizado { get; set; }
 
         [Display(Name = "Cod. Resina Adotada")]
-        public int CodResinaAdotada { get; set; }
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float CodResinaAdotada { get; set; }
 
         [Display(Name = "RR Max Resina")]
-        public int RrMaxResina { get; set; }
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float RrMaxResina { get; set; }
 
         [Display(Name = "Bico Ideal")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
@@ -96,7 +98,7 @@ namespace XlToDb.Model
         public int CodPreformaIdeal { get; set; }
 
         [Display(Name = "RR")]
-        public int Rr { get; set; }
+        public float Rr { get; set; }
 
         [Display(Name = "Lance Sinterizado")]
         public int LanceSinterizado { get; set; }
@@ -110,7 +112,7 @@ namespace XlToDb.Model
         [Display(Name = "Embalagem")]
         public int EmbalagemId { get; set; }
 
-        public virtual Embalagem Embalagem { get; set; }
+        public virtual Embal Embalagem { get; set; }
 
         [Display(Name = "Quant. por Embalagem")]
         public int QuantEmbalagem { get; set; }
@@ -235,5 +237,8 @@ namespace XlToDb.Model
         [Display(Name = "PV calculado R$/ m")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public float PvCalculadoRsM { get; set; }
+
+        [StringLength(10)]
+        public string Cadastro { get; set; }
     }
 }

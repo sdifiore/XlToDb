@@ -23,8 +23,9 @@ namespace XlToDb
             //xl.AjusteProdutos();
             //xl.PadraoFixo();
             //xl.ResinaPtfe();
-            xl.ProcTubo();
-
+            //xl.ProcTubo();
+            //xl.CustoCargosDiretos();
+            xl.DespesaFixa();
         }
     }
 }

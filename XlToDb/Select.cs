@@ -114,7 +114,7 @@ namespace XlToDb
             return false;
         }
 
-        public static int Setor(string celula, int i)
+        public static int Setor(string celula)
         {
             var db = new EntityContext();
             var setor = db.Setores.FirstOrDefault(s => s.Codigo == celula);
@@ -200,8 +200,8 @@ namespace XlToDb
         public static int Embalagem(string celula)
         {
             var db = new EntityContext();
-            var embalagem = db.Embalagens.SingleOrDefault(e => e.Descricao == celula);
-            int result = embalagem == null ? 9 : embalagem.Id;
+            var embalagem = db.Embals.SingleOrDefault(e => e.Sigla == celula);
+            int result = embalagem == null ? 6 : embalagem.Id;
 
             return result;
         }

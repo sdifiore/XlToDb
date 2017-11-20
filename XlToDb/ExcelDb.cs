@@ -242,7 +242,7 @@ namespace XlToDb
                         Comentario = range.Cells[i, 5] != null && range.Cells[i, 5].Value2 != null ? range.Cells[i, 5].Value2.ToString() : "--",
                         QtdMaquinas = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? (int)range.Cells[i, 6].Value2 : 1,
                         Custo = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? (float)range.Cells[i, 7].Value2 : 0,
-                        SetorId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.Setor(range.Cells[i, 8].Value2.ToString(), i) : 22
+                      //  SetorId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.Setor(range.Cells[i, 8].Value2.ToString(), i) : 22
                     };
 
                     db.Operacoes.Add(operacao);
@@ -672,6 +672,7 @@ namespace XlToDb
                 data.FabricanteId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Fabricante(range.Cells[i, j].Value2.ToString()) : 5;
                 data.ResinaBaseId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.ResinaBase(range.Cells[i, j].Value2.ToString()) : 4;
                 data.InsumoId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Insumo(range.Cells[i, j].Value2.ToString()) : 2450;
+                data.Custo = range.Cells[i, 11] != null && range.Cells[i, 11].Value2 != null ? (float)range.Cells[i, 11].Value2 : 0;
                 data.MaxRr = range.Cells[i, 12] != null && range.Cells[i, 12].Value2 != null ? (int)range.Cells[i, 12].Value2 : 0;
                 data.Classificacao = range.Cells[i, 13] != null && range.Cells[i, 13].Value2 != null ? range.Cells[i, 13].Value2.ToString() : "--";
                 data.MaxRrAntiga = range.Cells[i, 14] != null && range.Cells[i, 14].Value2 != null ? (int)range.Cells[i, 14].Value2 : 0;
@@ -705,16 +706,88 @@ namespace XlToDb
                 data.PctCarga2 = range.Cells[i, 10] != null && range.Cells[i, 10].Value2 != null ? (float)range.Cells[i, 10].Value2 : 0;
                 data.Sinterizado = range.Cells[i, 11] != null && range.Cells[i, 11].Value2 != null ? Select.Sinterizado(range.Cells[i, 11].Value2.ToString()) : true;
                 data.FatorMultiplQtde = range.Cells[i, 26] != null && range.Cells[i, 26].Value2 != null ? (int)range.Cells[i, 26].Value2 : 0;
-                data.EmbalagemId = range.Cells[i, 28] != null && range.Cells[i, 28].Value2 != null ? Select.Embalagem(range.Cells[i, 28].Value2.ToString()) : 9;
+                data.EmbalagemId = range.Cells[i, 28] != null && range.Cells[i, 28].Value2 != null ? Select.Embalagem(range.Cells[i, 28].Value2.ToString()) : 6;
                 data.QuantEmbalagem = range.Cells[i, 29] != null && range.Cells[i, 29].Value2 != null ? (int)range.Cells[i, 29].Value2 : 0;
                 data.ProcessoContinuo = range.Cells[i, 30] != null && range.Cells[i, 30].Value2 != null ? Select.ProcessoContinuo(range.Cells[i, 30].Value2.ToString()) : true;
                 data.FatorMultiplVExter = range.Cells[i, 32] != null && range.Cells[i, 32].Value2 != null ? (int)range.Cells[i, 32].Value2 : 0;
                 data.FatorMultiplVelSint = range.Cells[i, 34] != null && range.Cells[i, 34].Value2 != null ? (int)range.Cells[i, 34].Value2 : 0;
                 data.TesteEstqEsto = range.Cells[i, 36] != null && range.Cells[i, 36].Value2 != null ? Select.TesteEstqEstoq(range.Cells[i, 36].Value2.ToString()) : true;
+                data.Cadastro = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "--";
 
                 db.ProcTubos.Add(data);
                 db.SaveChanges();
                 Console.WriteLine(i);
+            }
+        }
+
+        public void CustoCargosDiretos()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Cargos);
+            Excel._Worksheet worksheet = workbook.Sheets[9];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 4; i < 15; i++)
+            {
+                int j = 1;
+
+                var data = new CustoCargoDireto
+                {
+                    SetorId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Setor(range.Cells[i, j].Value2.ToString()) : 22,
+                    Operadores = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0,
+                    MoDireta = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                    CodigoLiderApoio = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--",
+                    MoDiretaLiderApoio = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                    HorasModOperadores = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                    HorasModTotal = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                    CustoUnitario = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                    RateioSetor20 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                    RateioSetor40 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                    RateioSetor50 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                    RateioSetor60 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                    SomaIndiretos = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                    SomaDiretoIndireto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                    RateioCustoUnitario = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0
+                };
+
+                db.CustoCargoDiretos.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
+        }
+
+        public void DespesaFixa()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.DespFixa);
+            Excel._Worksheet worksheet = workbook.Sheets[2];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 2; i < 201; i++)
+            {
+                int j = 0;
+                var data = new DespesaFixa();
+
+                data.Despesa = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.ValorTotal = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.Comentario = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.CodCrit = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.CriterioRateio = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.RateioFitas = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.RateioTuboCordaoPerfil = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.RateioFioGaxPtfePuro = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.RateioFioGaxPtfeGraf = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.RateioGraxa = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.RateioSucatas = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.RateioRevenda = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.Somas = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+
+
+                db.DespesasFixas.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i); ;
             }
         }
     }

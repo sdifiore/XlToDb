@@ -73,8 +73,11 @@
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\ClasseCusto.cs" />
     <Compile Include="Model\Cotacao.cs" />
+    <Compile Include="Model\CustoCargoDireto.cs" />
     <Compile Include="Model\CustoFolha.cs" />
+    <Compile Include="Model\DespesaFixa.cs" />
     <Compile Include="Model\Dominio.cs" />
+    <Compile Include="Model\Embal.cs" />
     <Compile Include="Model\Embalagem.cs" />
     <Compile Include="Model\EncapTubo.cs" />
     <Compile Include="Model\Estrutura.cs" />
