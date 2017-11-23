@@ -11,6 +11,10 @@ namespace XlToDb.Model
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Base> Bases { get; set; }
         public DbSet<ClasseCusto> ClassesCusto { get; set; }
+        public DbSet<CondicaoPreco> CondicoesPrecos { get; set; }
+        public DbSet<Cotacao> Cotacoes { get; set; }
+        public DbSet<Embal> Embals { get; set; }
+        public DbSet<Embalagem> Embalagens { get; set; }
         public DbSet<Familia> Familias { get; set; }
         public DbSet<Fabricante> Fabricantes { get; set; }
         public DbSet<GrupoRateio> GruposRateio { get; set; }
@@ -36,14 +40,12 @@ namespace XlToDb.Model
         public DbSet<DespesaFixa> DespesasFixas { get; set; }
         public DbSet<ParteProduto> ParteProdutos { get; set; }
         public DbSet<PrecoNacional> PrecosNacionais { get; set; }
+        public DbSet<PrecoExportacao> PrecosExportacao { get; set; }
         public DbSet<ProcTubo> ProcTubos { get; set; }
-        public DbSet<Cotacao> Cotacoes { get; set; }
         public DbSet<Ajuste> Ajustes { get; set; }
         public DbSet<TipoAlteracao> TiposAlteracao { get; set; }
         public DbSet<EncapTubo> EncapTubos { get; set; }
         public DbSet<Graxa> Graxas { get; set; }
-        public DbSet<Embal> Embals { get; set; }
-        public DbSet<Embalagem> Embalagens { get; set; }
         public DbSet<Resina> Resinas { get; set; }
         public DbSet<ResinaBase> ResinasBase { get; set; }
         public DbSet<ResinaPtfe> ResinasPtfe { get; set; }

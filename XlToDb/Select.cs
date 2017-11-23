@@ -335,5 +335,15 @@ namespace XlToDb
 
             return result;
         }
+
+        public static int CondicaoPreco(string celula)
+        {
+            int result = 4;
+            var db = new EntityContext();
+            var condicao = db.CondicoesPrecos.SingleOrDefault(c => c.Apelido == celula);
+            if (condicao != null) result = condicao.Id;
+
+            return result;
+        }
     }
 }

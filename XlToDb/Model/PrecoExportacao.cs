@@ -74,7 +74,7 @@ namespace XlToDb.Model
 
         [Display(Name = "% Desp Export Espec")]
         [DisplayFormat(DataFormatString = "{0:P2}")]
-        public float PdtDespExportEspec { get; set; }
+        public float PctDespExportEspec { get; set; }
 
         [Display(Name = "PV FOB Maximo")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
