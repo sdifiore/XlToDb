@@ -69,7 +69,7 @@ namespace XlToDb
                         : 1;
                     data.TipoProdId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
                         ? Select.TipoProducao(range.Cells[i, j].Value2.ToString())
-                        : 1;
+                        : 3;
                     data.PcpId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
                         ? Select.Pcp(range.Cells[i, j].Value2.ToString())
                         : 1;
@@ -105,7 +105,7 @@ namespace XlToDb
                         Ipi = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
                         QtdUndd = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0,
                         DominioId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Dominio(range.Cells[i, j].Value2.ToString()) : 1,
-                        TipoProducaoId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.TipoProducao(range.Cells[i, j].Value2.ToString()) : 1,
+                        TipoProducaoId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.TipoProducao(range.Cells[i, j].Value2.ToString()) : 3,
                         PcpId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Pcp(range.Cells[i, j].Value2.ToString()) : 1,
                         QtdUndArmz = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0,
                         ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642
@@ -788,6 +788,54 @@ namespace XlToDb
                 db.DespesasFixas.Add(data);
                 db.SaveChanges();
                 Console.WriteLine(i); ;
+            }
+        }
+
+        public void PrecoNacional()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PrecoNacional);
+            Excel._Worksheet worksheet = workbook.Sheets[2];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 8; i < 388; i++)
+            {
+                int j = 0;
+                var data = new PrecoNacional();
+
+                data.LinhaUn = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.Descricao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.Apelido = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                data.Ipi = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.QtUnid = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.TipoProducaoId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.TipoProducao(range.Cells[i, j].Value2.ToString()) : 3;
+                j = 15;
+                data.Com = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.LlMin = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.PrecoRefer = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.AplicRoteiro = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.CustoDireto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.RateioCustoFixo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.Aumento = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+
+                db.PrecosNacionais.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
+        }
+
+        public void PrecoExportacao()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PrecoExportacao);
+            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 0; i < length; i++)
+            {
+
             }
         }
     }

@@ -98,6 +98,8 @@
     <Compile Include="Model\PadraoFixo.cs" />
     <Compile Include="Model\ParteProduto.cs" />
     <Compile Include="Model\Pcp.cs" />
+    <Compile Include="Model\PrecoExportacao.cs" />
+    <Compile Include="Model\PrecoNacional.cs" />
     <Compile Include="Model\PreForma.cs" />
     <Compile Include="Model\PrensaPreForma.cs" />
     <Compile Include="Model\ProcTubo.cs" />

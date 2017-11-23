@@ -35,6 +35,7 @@ namespace XlToDb.Model
         public DbSet<Dominio> Dominios { get; set; }
         public DbSet<DespesaFixa> DespesasFixas { get; set; }
         public DbSet<ParteProduto> ParteProdutos { get; set; }
+        public DbSet<PrecoNacional> PrecosNacionais { get; set; }
         public DbSet<ProcTubo> ProcTubos { get; set; }
         public DbSet<Cotacao> Cotacoes { get; set; }
         public DbSet<Ajuste> Ajustes { get; set; }

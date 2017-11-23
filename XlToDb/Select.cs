@@ -157,7 +157,12 @@ namespace XlToDb
 
         public static int TipoProducao(string celula)
         {
-            return celula == "IND" ? 1 : 2;
+            int result = 3;
+
+            if (celula == "IND") result = 1;
+            else if (celula == "BEN") result = 2;
+
+            return result;
         }
 
         public static int Pcp(string celula)
