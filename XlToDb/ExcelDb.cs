@@ -830,17 +830,22 @@ namespace XlToDb
             var db = new EntityContext();
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PrecoExportacao);
-            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel._Worksheet worksheet = workbook.Sheets[4];
             Excel.Range range = worksheet.UsedRange;
 
             for (int i = 9; i < 778; i++)
             {
                 int j = 0;
+                bool ok;
+                string x;
+                float temp;
                 var data = new PrecoExportacao();
                 data.LinhaUn = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
                 data.Descricao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
                 data.Apelido = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.PesoLiquido = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                x = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "0";
+                ok = float.TryParse(x, out temp);
+                data.PesoLiquido = ok ? temp : 0;
                 data.QtUnid = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
                 data.De2A5 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
                 data.De5A10 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
@@ -855,13 +860,20 @@ namespace XlToDb
                 data.PctEspecFrete = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
                 data.DespExpPadrao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Sinterizado(range.Cells[i,    j].Value2.ToString()) : true;
                 data.PctDespExportEspec = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.PvFobMax = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                x = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "0";
+                ok = float.TryParse(x, out temp);
+                data.PvFobMax = ok ? temp : 0;
                 data.CustoDireto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
                 data.RateioCustoFixo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.PvFobMin = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                x = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "0";
+                ok = float.TryParse(x, out temp);
+                data.PvFobMin = ok ? temp : 0;
                 data.ValorCifPtfe = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.RelPtfeSobrePv = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0; ;
+                x = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "0";
+                ok = float.TryParse(x, out temp);
+                data.RelPtfeSobrePv = ok ? temp : 0;
 
+                db.PrecosExportacao.Add(data);
                 db.SaveChanges();
                 Console.WriteLine(i);
             }
