@@ -26,7 +26,9 @@ namespace XlToDb
             //xl.ProcTubo();
             //xl.CustoCargosDiretos();
             //xl.DespesaFixa();
-            xl.PrecoExportacao();
+            //xl.PrecoExportacao();
+            //xl.AddPtfe2Produto();
+            xl.TipoProducaoProduto();
         }
     }
 }

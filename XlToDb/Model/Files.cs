@@ -30,5 +30,6 @@ namespace XlToDb.Model
         public const string DespFixa = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_2.Orçamento.xlsm";
         public const string PrecoNacional = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_4.PV.xlsm";
         public const string PrecoExportacao = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_4.PV.xlsm";
+        public const string PctPtfe = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_4.PV.xlsm";
     }
 }

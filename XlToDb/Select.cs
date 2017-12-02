@@ -174,7 +174,7 @@ namespace XlToDb
         {
             var db = new EntityContext();
             var resposta = db.Produtos.FirstOrDefault(p => p.Apelido == celula);
-            if (resposta == null) return 15871;
+            if (resposta == null) return 16895;
             return resposta.Id;
         }
 
@@ -342,6 +342,15 @@ namespace XlToDb
             var db = new EntityContext();
             var condicao = db.CondicoesPrecos.SingleOrDefault(c => c.Apelido == celula);
             if (condicao != null) result = condicao.Id;
+
+            return result;
+        }
+
+        public static bool DespesaPadrao(string celula)
+        {
+            bool result = celula == "sim"
+                ? true
+                : false;
 
             return result;
         }

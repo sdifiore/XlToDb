@@ -193,5 +193,9 @@ namespace XlToDb.Model
         public int MedidaFitaId { get; set; }
 
         public MedidaFita MedidaFita { get; set; }
+
+        [Display(Name = "% PTFE em Peso")]
+        [DisplayFormat(DataFormatString = "{0:P0}")]
+        public float PctPtfePeso { get; set; }
     }
 }
