@@ -909,5 +909,29 @@ namespace XlToDb
 
             db.SaveChanges();
         }
+
+        public void DfxProdRev()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.DfxProdRev);
+            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 2; i < 15; i++)
+            {
+                int j = 3;
+                var data = new DfxProdRev();
+                data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 16895;
+                data.UnidadeId = 1;
+                data.QtdUnidade = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.QtdCompra = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                data.PrecoCompra = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+
+                db.DfxProdRevs.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
+        }
     }
 }

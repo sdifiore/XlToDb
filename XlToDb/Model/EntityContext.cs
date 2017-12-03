@@ -13,6 +13,7 @@ namespace XlToDb.Model
         public DbSet<ClasseCusto> ClassesCusto { get; set; }
         public DbSet<CondicaoPreco> CondicoesPrecos { get; set; }
         public DbSet<Cotacao> Cotacoes { get; set; }
+        public DbSet<DfxProdRev> DfxProdRevs { get; set; }
         public DbSet<Embal> Embals { get; set; }
         public DbSet<Embalagem> Embalagens { get; set; }
         public DbSet<Familia> Familias { get; set; }

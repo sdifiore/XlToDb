@@ -28,7 +28,8 @@ namespace XlToDb
             //xl.DespesaFixa();
             //xl.PrecoExportacao();
             //xl.AddPtfe2Produto();
-            xl.TipoProducaoProduto();
+            //xl.TipoProducaoProduto();
+            xl.DfxProdRev();
         }
     }
 }

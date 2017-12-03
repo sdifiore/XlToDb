@@ -77,6 +77,7 @@
     <Compile Include="Model\CustoCargoDireto.cs" />
     <Compile Include="Model\CustoFolha.cs" />
     <Compile Include="Model\DespesaFixa.cs" />
+    <Compile Include="Model\DfxProdRev.cs" />
     <Compile Include="Model\Dominio.cs" />
     <Compile Include="Model\Embal.cs" />
     <Compile Include="Model\Embalagem.cs" />
