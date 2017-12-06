@@ -88,6 +88,7 @@ namespace XlToDb
             if (celula == "tubo") return 13;
             if (celula == "sucata") return 14;
             if (celula == "descarte") return 15;
+            if (celula == "gxfgraf") return 19;
 
             return 18;
         }
@@ -206,7 +207,7 @@ namespace XlToDb
         {
             var db = new EntityContext();
             var embalagem = db.Embals.SingleOrDefault(e => e.Sigla == celula);
-            int result = embalagem == null ? 6 : embalagem.Id;
+            int result = embalagem == null ? 16 : embalagem.Id;
 
             return result;
         }

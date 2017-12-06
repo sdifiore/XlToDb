@@ -684,7 +684,7 @@ namespace XlToDb
             {
                 var data = new ProcTubo();
 
-                data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 15871;
+                data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 16895;
                 data.ResinaBaseId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.ResinaBase(range.Cells[i, 3].Value2.ToString()) : 4;
                 data.DiamExterno = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? (float)range.Cells[i, 4].Value2 : 0;
                 data.DiamInterno = range.Cells[i, 5] != null && range.Cells[i, 5].Value2 != null ? (float)range.Cells[i, 5].Value2 : 0;
@@ -695,7 +695,7 @@ namespace XlToDb
                 data.PctCarga2 = range.Cells[i, 10] != null && range.Cells[i, 10].Value2 != null ? (float)range.Cells[i, 10].Value2 : 0;
                 data.Sinterizado = range.Cells[i, 11] != null && range.Cells[i, 11].Value2 != null ? Select.Sinterizado(range.Cells[i, 11].Value2.ToString()) : true;
                 data.FatorMultiplQtde = range.Cells[i, 26] != null && range.Cells[i, 26].Value2 != null ? (int)range.Cells[i, 26].Value2 : 0;
-                data.EmbalagemId = range.Cells[i, 28] != null && range.Cells[i, 28].Value2 != null ? Select.Embalagem(range.Cells[i, 28].Value2.ToString()) : 6;
+                data.EmbalagemId = range.Cells[i, 28] != null && range.Cells[i, 28].Value2 != null ? Select.Embalagem(range.Cells[i, 28].Value2.ToString()) : 16;
                 data.QuantEmbalagem = range.Cells[i, 29] != null && range.Cells[i, 29].Value2 != null ? (int)range.Cells[i, 29].Value2 : 0;
                 data.ProcessoContinuo = range.Cells[i, 30] != null && range.Cells[i, 30].Value2 != null ? Select.ProcessoContinuo(range.Cells[i, 30].Value2.ToString()) : true;
                 data.FatorMultiplVExter = range.Cells[i, 32] != null && range.Cells[i, 32].Value2 != null ? (int)range.Cells[i, 32].Value2 : 0;
@@ -932,6 +932,31 @@ namespace XlToDb
                 db.SaveChanges();
                 Console.WriteLine(i);
             }
+        }
+
+        public void GrupoRateioProduto()
+        {
+            var db = new EntityContext();
+
+
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Produtos);
+            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 2; i < 1025 ; i++)
+            {
+                string apelido = range.Cells[i, 1].Value2.ToString();
+                var data = db.Produtos.Single(p => p.Apelido == apelido);
+
+                data.GrupoRateioId = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null
+                    ? Select.GrupoRateio(range.Cells[i, 9].Value2.ToString())
+                    : 18;
+
+                Console.WriteLine(i);
+            }
+
+            db.SaveChanges();
         }
     }
 }

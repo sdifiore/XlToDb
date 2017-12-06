@@ -22,14 +22,15 @@ namespace XlToDb
             //xl.EncapTubos();
             //xl.AjusteProdutos();
             //xl.PadraoFixo();
-            //xl.ResinaPtfe();
+            xl.ResinaPtfe();
             //xl.ProcTubo();
             //xl.CustoCargosDiretos();
             //xl.DespesaFixa();
             //xl.PrecoExportacao();
             //xl.AddPtfe2Produto();
             //xl.TipoProducaoProduto();
-            xl.DfxProdRev();
+            //xl.DfxProdRev();
+            //xl.GrupoRateioProduto();
         }
     }
 }
