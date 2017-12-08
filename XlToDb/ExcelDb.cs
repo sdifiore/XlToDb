@@ -958,5 +958,40 @@ namespace XlToDb
 
             db.SaveChanges();
         }
+
+        public void PlanejMod()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PlanejMod);
+            Excel._Worksheet worksheet = workbook.Sheets[4];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 6; i < 59; i++)
+            {
+                int j = 4;
+                var data = new PlanejMod();
+                data.OperacaoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Operacao(range.Cells[i, 1].Value2.ToString()) : 583;
+                data.UnidadeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8;
+                data.SomaDe1 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SomaDe2 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SomaDe3 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SomaDe4 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SomaDe5 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SomaDe6 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SomaDe7 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SomaDe8 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SomaDe9 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SomaDe10 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SomaDe11 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SomaDe12 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                data.SetorId = range.Cells[i, 29] != null && range.Cells[i, 29].Value2 != null ? Select.Setor(range.Cells[i, 29].Value2.ToString()) : 22;
+                data.MediaMensal = range.Cells[i, 30] != null && range.Cells[i, 30].Value2 != null ? (float)range.Cells[i, 30].Value2 : 0;
+
+                db.PlanejMods.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
+        }
     }
 }

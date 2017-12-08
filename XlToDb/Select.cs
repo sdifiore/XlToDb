@@ -16,6 +16,8 @@ namespace XlToDb
             if (comp == "m" || comp == "mt" || comp == "metro") return 4;
             if (comp == "rl" || comp == "rolo") return 5;
             if (comp == "ml" || comp == "milheiro") return 6;
+            if (comp == "hr" || comp == "hora") return 9;
+            if (comp == "un" || comp == "unidade") return 10;
 
             return 8;
         }
@@ -352,6 +354,16 @@ namespace XlToDb
             bool result = celula == "sim"
                 ? true
                 : false;
+
+            return result;
+        }
+
+        public static int Operacao(string celula)
+        {
+            int result = 583;
+            var db = new EntityContext();
+            var operacao = db.Operacoes.SingleOrDefault(o => o.CodigoOperacao == celula);
+            if (operacao != null) result = operacao.OperacaoId;
 
             return result;
         }

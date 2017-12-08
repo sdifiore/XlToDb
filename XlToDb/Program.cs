@@ -22,7 +22,7 @@ namespace XlToDb
             //xl.EncapTubos();
             //xl.AjusteProdutos();
             //xl.PadraoFixo();
-            xl.ResinaPtfe();
+            //xl.ResinaPtfe();
             //xl.ProcTubo();
             //xl.CustoCargosDiretos();
             //xl.DespesaFixa();
@@ -31,6 +31,7 @@ namespace XlToDb
             //xl.TipoProducaoProduto();
             //xl.DfxProdRev();
             //xl.GrupoRateioProduto();
+            xl.PlanejMod();
         }
     }
 }
