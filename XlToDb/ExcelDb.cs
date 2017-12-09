@@ -1004,11 +1004,12 @@ namespace XlToDb
 
             for (int i = 2; i < range.Rows.Count + 1; i++)
             {
-                var data = new CuboEstoque
-                {
-                    Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "--",
-                    Quantidade = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? (int)range.Cells[i, 4].Value2 : 0
-                };
+                var data = new CuboEstoque();
+
+                data.Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "--";
+                data.Descricao = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null ? range.Cells[i, 2].Value2.ToString() : "--";
+                data.ClasseCusto = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? range.Cells[i, 3].Value2.ToString() : "--";
+                data.Quantidade = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? (int)range.Cells[i, 4].Value2 : 0;
 
                 db.CubosEstoque.Add(data);
                 db.SaveChanges();
