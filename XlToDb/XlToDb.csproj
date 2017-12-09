@@ -74,6 +74,7 @@
     <Compile Include="Model\ClasseCusto.cs" />
     <Compile Include="Model\CondicaoPreco.cs" />
     <Compile Include="Model\Cotacao.cs" />
+    <Compile Include="Model\CuboEstoque.cs" />
     <Compile Include="Model\CustoCargoDireto.cs" />
     <Compile Include="Model\CustoFolha.cs" />
     <Compile Include="Model\DespesaFixa.cs" />

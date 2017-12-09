@@ -31,7 +31,7 @@ namespace XlToDb
             //xl.TipoProducaoProduto();
             //xl.DfxProdRev();
             //xl.GrupoRateioProduto();
-            xl.PlanejMod();
+            xl.CuboEstoque();
         }
     }
 }

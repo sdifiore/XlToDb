@@ -993,5 +993,27 @@ namespace XlToDb
                 Console.WriteLine(i);
             }
         }
+
+        public void CuboEstoque()
+        {
+            var db = new EntityContext();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.CuboEstoque);
+            Excel._Worksheet worksheet = workbook.Sheets[8];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 2; i < range.Rows.Count + 1; i++)
+            {
+                var data = new CuboEstoque
+                {
+                    Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "--",
+                    Quantidade = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? (int)range.Cells[i, 4].Value2 : 0
+                };
+
+                db.CubosEstoque.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i);
+            }
+        }
     }
 }
