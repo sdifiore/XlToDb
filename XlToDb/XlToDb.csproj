@@ -101,6 +101,7 @@
     <Compile Include="Model\PadraoFixo.cs" />
     <Compile Include="Model\ParteProduto.cs" />
     <Compile Include="Model\Pcp.cs" />
+    <Compile Include="Model\PlanejCompra.cs" />
     <Compile Include="Model\PlanejMod.cs" />
     <Compile Include="Model\PrecoExportacao.cs" />
     <Compile Include="Model\PrecoNacional.cs" />

@@ -12,12 +12,13 @@ namespace XlToDb
 
             if (comp == "cx" || comp == "caixa") return 1;
             if (comp == "pc" || comp == "pç" || comp == "peça" || comp == "peca") return 2;
-            if (comp == "kg" || comp == "kilograma") return 3;
+            if (comp == "kg" || comp == "kilograma" || comp == "kilo") return 3;
             if (comp == "m" || comp == "mt" || comp == "metro") return 4;
             if (comp == "rl" || comp == "rolo") return 5;
             if (comp == "ml" || comp == "milheiro") return 6;
             if (comp == "hr" || comp == "hora") return 9;
-            if (comp == "un" || comp == "unidade") return 10;
+            if (comp == "un" || comp == "unidade" || comp == "unitário" || comp == "unitario") return 10;
+            if (comp == "lt" || comp == "litro" || comp == "l") return 11;
 
             return 8;
         }
@@ -272,7 +273,7 @@ namespace XlToDb
             var db = new EntityContext();
             var insumo = db.Insumos.SingleOrDefault(p => p.Apelido == celula);
             var result = insumo == null
-                ? 2450
+                ? 3063
                 : insumo.InsumoId;
 
             return result;
