@@ -1009,7 +1009,7 @@ namespace XlToDb
                 data.Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "--";
                 data.Descricao = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null ? range.Cells[i, 2].Value2.ToString() : "--";
                 data.ClasseCusto = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? range.Cells[i, 3].Value2.ToString() : "--";
-                data.Quantidade = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? (int)range.Cells[i, 4].Value2 : 0;
+                data.Quantidade = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? (float)range.Cells[i, 4].Value2 : 0;
 
                 db.CubosEstoque.Add(data);
                 db.SaveChanges();
@@ -1048,6 +1048,29 @@ namespace XlToDb
                 db.PlanejCompras.Add(data);
                 db.SaveChanges();
                 Console.WriteLine(i);
+            }
+        }
+
+        public void PlanejNecessid()
+        {
+            var db = new EntityContext();
+            var estruturas = db.Estruturas.ToList();
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PlanejNecessid);
+            Excel._Worksheet worksheet = workbook.Sheets[2];
+            Excel.Range range = worksheet.UsedRange;
+            int i = 0;
+
+            foreach (var stru in estruturas)
+            {
+                var plan = new PlanejNecessid
+                {
+                    EstruturaId = stru.Id
+                };
+
+                db.PlanejNecessides.Add(plan);
+                db.SaveChanges();
+                Console.WriteLine(i++);
             }
         }
     }
