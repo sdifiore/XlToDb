@@ -6,9 +6,11 @@ namespace XlToDb.Model
     {
         public int Id { get; set; }
 
-        [StringLength(10)]
         [Display(Name = "Código")]
-        public string Apelido { get; set; }
+        public int ProdutoId { get; set; }
+
+        [Display(Name = "Código")]
+        public Produto Produto { get; set; }
 
         [Display(Name = "Peso Unitário")]
         public float PesoUnitario { get; set; }

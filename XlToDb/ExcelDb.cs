@@ -1084,7 +1084,7 @@ namespace XlToDb
             {
                 var data = new PlanejVenda
                 {
-                    Apelido = produto.Apelido
+                    ProdutoId = produto.Id
                 };
 
                 db.PlanejVendas.Add(data);
