@@ -33,7 +33,8 @@ namespace XlToDb
             //xl.GrupoRateioProduto();
             //xl.CuboEstoque();
             //xl.PlanejCompra();
-            xl.PlanejNecessid();
+            //xl.PlanejNecessid();
+            xl.PlanejVendas();
         }
     }
 }

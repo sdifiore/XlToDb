@@ -1073,5 +1073,24 @@ namespace XlToDb
                 Console.WriteLine(i++);
             }
         }
+
+        public void PlanejVendas()
+        {
+            var db = new EntityContext();
+            var produtos = db.Produtos.ToList();
+            int i = 0;
+
+            foreach (var produto in produtos)
+            {
+                var data = new PlanejVenda
+                {
+                    Apelido = produto.Apelido
+                };
+
+                db.PlanejVendas.Add(data);
+                db.SaveChanges();
+                Console.WriteLine(i++);
+            }
+        }
     }
 }
