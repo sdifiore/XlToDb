@@ -34,7 +34,9 @@ namespace XlToDb
             //xl.CuboEstoque();
             //xl.PlanejCompra();
             //xl.PlanejNecessid();
-            xl.PlanejVendas();
+            //xl.PlanejVendas();
+            //xl.FatHistorico();
+            xl.AnoPlanejVendas();
         }
     }
 }

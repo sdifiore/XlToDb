@@ -19,6 +19,7 @@ namespace XlToDb.Model
         public DbSet<Embalagem> Embalagens { get; set; }
         public DbSet<Familia> Familias { get; set; }
         public DbSet<Fabricante> Fabricantes { get; set; }
+        public DbSet<FatHistorico> FatHistoricos { get; set; }
         public DbSet<GrupoRateio> GruposRateio { get; set; }
         public DbSet<Linha> Linhas { get; set; }
         public DbSet<LogData> LogData { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace XlToDb.Model
 {
@@ -83,6 +84,8 @@ namespace XlToDb.Model
         [Display(Name = "QvQtNac Ano")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public float QvQtNacAno { get; set; }
+
+        public DateTime? RefAno { get; set; }
 
         [Display(Name = "Média Mensal")]
         [DisplayFormat(DataFormatString = "{0:N0}")]

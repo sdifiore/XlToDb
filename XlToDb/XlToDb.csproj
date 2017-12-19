@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="DbLogger.cs" />
     <Compile Include="ExcelDb.cs" />
+    <Compile Include="FatHistorico.cs" />
+    <Compile Include="Function.cs" />
     <Compile Include="MedidaFita.cs" />
     <Compile Include="Migrations\201710011934142_InitialModel.cs" />
     <Compile Include="Migrations\201710011934142_InitialModel.Designer.cs">

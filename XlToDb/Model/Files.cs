@@ -36,5 +36,6 @@ namespace XlToDb.Model
         public const string CuboEstoque = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_5.Compras.xlsm";
         public const string PlanejCompra = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_5.Compras.xlsm";
         public const string PlanejNecessid = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_5.Compras.xlsm";
+        public const string FatHistorico = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_3.PlanejVendas.xlsm";
     }
 }
