@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using XlToDb.Models;
 
 namespace XlToDb.Model
 {

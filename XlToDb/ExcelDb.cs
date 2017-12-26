@@ -2,6 +2,8 @@
 using System.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 using XlToDb.Model;
+using XlToDb.Models;
+using System.Data.Entity;
 
 namespace XlToDb
 {
@@ -1084,7 +1086,8 @@ namespace XlToDb
             {
                 var data = new PlanejVenda
                 {
-                    ProdutoId = produto.Id
+                    ProdutoId = produto.Id,
+                    RefAno = DateTime.Now
                 };
 
                 db.PlanejVendas.Add(data);
@@ -1179,6 +1182,59 @@ namespace XlToDb
             foreach (var pv in plan)
             {
                 pv.RefAno = DateTime.Parse("01/05/2017");
+                Console.WriteLine(i++);
+            }
+
+            db.SaveChanges();
+        }
+
+        public void VarsPlanejVendas()
+        {
+            var db = new EntityContext();
+            var plan = db.PlanejVendas;
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PlanejVendas);
+            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 6; i < 269; i++)
+            {
+                int j = 61;
+                string apelido = range.Cells[i, 5].Value2.ToString();
+                var planej = plan.SingleOrDefault(p => p.Produto.Apelido == apelido);
+                planej.Criterio = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString().ToLower() : "-";
+                planej.VartC1 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.VarTc2 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.VartC3 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.VartC4 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+
+                Console.WriteLine(i);
+            }
+
+            db.SaveChanges();
+        }
+
+        public void VarPvPlanejVendas()
+        {
+            var db = new EntityContext();
+            var plan = db.PlanejVendas;
+            int i = 0;
+
+            foreach (var planej in plan)
+            {
+                planej.PvvpvaVarPvAnoMenos12 = 0;
+                planej.PvvpvaVarPvAnoMenos11 = 0.15f;
+                planej.PvvpvaVarPvAnoMenos10 = 0.15f;
+                planej.PvvpvaVarPvAnoMenos9 = 0.15f;
+                planej.PvvpvaVarPvAnoMenos8 = 0.15f;
+                planej.PvvpvaVarPvAnoMenos7 = 0.15f;
+                planej.PvvpvaVarPvAnoMenos6 = 0.15f;
+                planej.PvvpvaVarPvAnoMenos5 = 0.15f;
+                planej.PvvpvaVarPvAnoMenos4 = 0.15f;
+                planej.PvvpvaVarPvAnoMenos3 = 0.15f;
+                planej.PvvpvaVarPvAnoMenos2 = 0.15f;
+                planej.PvvpvaVarPvAno = 0.15f;
+
                 Console.WriteLine(i++);
             }
 

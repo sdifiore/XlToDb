@@ -1,45 +1,51 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using XlToDb.Model;
 
-namespace XlToDb.Model
+namespace XlToDb.Models
 {
     public class PlanejVenda
     {
         public int Id { get; set; }
 
         [Display(Name = "Código")]
+        [DisplayFormat(DataFormatString = "{0:N3}")]
         public int ProdutoId { get; set; }
 
         [Display(Name = "Código")]
+        [DisplayFormat(DataFormatString = "{0:N3}")]
         public Produto Produto { get; set; }
 
         [Display(Name = "Peso Unitário")]
+        [DisplayFormat(DataFormatString = "{0:N3}")]
         public float PesoUnitario { get; set; }
 
         [Display(Name = "Horas MOD")]
+        [DisplayFormat(DataFormatString = "{0:N3}")]
         public float HorasMod { get; set; }
 
         [Display(Name = "Custo Direto Total")]
+        [DisplayFormat(DataFormatString = "{0:N3}")]
         public float CustoDiretoTotal { get; set; }
 
         [Display(Name = "Custo Direto só Mats")]
+        [DisplayFormat(DataFormatString = "{0:N3}")]
         public float CustoDiretoMats { get; set; }
 
         [Display(Name = "Custo Direto só MOD")]
         public float CustoDiretoMod { get; set; }
 
         [Display(Name = "Custo Fixo Fábrica")]
+        [DisplayFormat(DataFormatString = "{0:N3}")]
         public float CustoFixoFabrica { get; set; }
 
         [Display(Name = "Custo Fixo Adm + Com")]
+        [DisplayFormat(DataFormatString = "{0:N3}")]
         public float CustoFixAdmCom { get; set; }
 
         [Display(Name = "Alíquota IPI")]
+        [DisplayFormat(DataFormatString = "{0:P0}")]
         public float AliquotaIpi { get; set; }
-
-        [Display(Name = "QvQtNac Ano - 12")]
-        [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QvQtNacAnoMenos12 { get; set; }
 
         [Display(Name = "QvQtNac Ano - 11")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
@@ -51,41 +57,45 @@ namespace XlToDb.Model
 
         [Display(Name = "QvQtNac Ano - 9")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QvQtNacAnoMenos9 { get; set; }
+        public float QvQtNacAnoMenos09 { get; set; }
 
         [Display(Name = "QvQtNac Ano - 8")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QvQtNacAnoMenos8 { get; set; }
+        public float QvQtNacAnoMenos08 { get; set; }
 
         [Display(Name = "QvQtNac Ano - 7")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QvQtNacAnoMenos7 { get; set; }
+        public float QvQtNacAnoMenos07 { get; set; }
 
         [Display(Name = "QvQtNac Ano - 6")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QvQtNacAnoMenos6 { get; set; }
+        public float QvQtNacAnoMenos06 { get; set; }
 
         [Display(Name = "QvQtNac Ano - 5")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QvQtNacAnoMenos5 { get; set; }
+        public float QvQtNacAnoMenos05 { get; set; }
 
         [Display(Name = "QvQtNac Ano - 4")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QvQtNacAnoMenos4 { get; set; }
+        public float QvQtNacAnoMenos04 { get; set; }
 
         [Display(Name = "QvQtNac Ano - 3")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QvQtNacAnoMenos3 { get; set; }
+        public float QvQtNacAnoMenos03 { get; set; }
 
         [Display(Name = "QvQtNac Ano - 2")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QvQtNacAnoMenos2 { get; set; }
+        public float QvQtNacAnoMenos02 { get; set; }
+
+        [Display(Name = "QvQtNac Ano - 1")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float QvQtNacAnoMenos01 { get; set; }
 
         [Display(Name = "QvQtNac Ano")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QvQtNacAno { get; set; }
+        public float QvQtNacAno00 { get; set; }
 
-        public DateTime? RefAno { get; set; }
+        public DateTime RefAno { get; set; }
 
         [Display(Name = "Média Mensal")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
@@ -108,7 +118,7 @@ namespace XlToDb.Model
         public float PvMed4o3m { get; set; }
 
         [Display(Name = "PV Nac adotado")]
-        [DisplayFormat(DataFormatString = "{0:N2}")]
+        [DisplayFormat(DataFormatString = "{0:N3}")]
         public float PvNacAdotado { get; set; }
 
         [Display(Name = "ST Média")]
@@ -123,16 +133,16 @@ namespace XlToDb.Model
         [DisplayFormat(DataFormatString = "{0:P2}")]
         public float ComissaoMediaNac { get; set; }
 
-        [Display(Name = "Fretes Nac %a")]
+        [Display(Name = "Fretes Nac %")]
         [DisplayFormat(DataFormatString = "{0:P2}")]
         public float FreteNacPct { get; set; }
 
+        [Display(Name = "Prazo Receb Med NAC")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float PrazoRecebMedioNac { get; set; }
+
         [Display(Name = "Mês Receb Med Nac")]       // AM
         public int MesRecebMedNac { get; set; }
-
-        [Display(Name = "QtExp Ano - 12")]
-        [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QtExpAnoMenos12 { get; set; }
 
         [Display(Name = "QtExp Ano - 11")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
@@ -144,39 +154,43 @@ namespace XlToDb.Model
 
         [Display(Name = "QtExp Ano - 9")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QtExpAnoMenos9 { get; set; }
+        public float QtExpAnoMenos09 { get; set; }
 
         [Display(Name = "QtExp Ano - 8")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QtExpAnoMenos8 { get; set; }
+        public float QtExpAnoMenos08 { get; set; }
 
         [Display(Name = "QtExp Ano - 7")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QtExpAnoMenos7 { get; set; }
+        public float QtExpAnoMenos07 { get; set; }
 
         [Display(Name = "QtExp Ano - 6")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QtExpAnoMenos6 { get; set; }
+        public float QtExpAnoMenos06 { get; set; }
 
         [Display(Name = "QtExp Ano - 5")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QtExpAnoMenos5 { get; set; }
+        public float QtExpAnoMenos05 { get; set; }
 
         [Display(Name = "QtExp Ano - 4")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QtExpAnoMenos4 { get; set; }
+        public float QtExpAnoMenos04 { get; set; }
 
         [Display(Name = "QtExp Ano - 3")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QtExpAnoMenos3 { get; set; }
+        public float QtExpAnoMenos03 { get; set; }
 
         [Display(Name = "QtExp Ano - 2")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QtExpAnoMenos2 { get; set; }
+        public float QtExpAnoMenos02 { get; set; }
+
+        [Display(Name = "QtExp Ano - 1")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float QtExpAnoMenos01 { get; set; }
 
         [Display(Name = "QtExp Ano")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float QtExpAno { get; set; }
+        public float QtExpAno00 { get; set; }
 
         [Display(Name = "Média Mensal")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
@@ -209,6 +223,9 @@ namespace XlToDb.Model
         [Display(Name = "Prazo Receb Med Exp")]
         public int PrazoRecebMedExp { get; set; }
 
+        [Display(Name = "Mês Receb Med Exp")]
+        public int MesRecebMedExp { get; set; }
+
         [StringLength(128)]      // BI
         [Display(Name = "Comentário")]
         public string ComentarioCelulaBi { get; set; }
@@ -229,10 +246,6 @@ namespace XlToDb.Model
         [Display(Name = "Var TC4")]
         public int VartC4 { get; set; }
 
-        [Display(Name = "PqQtNac Ano - 12")]
-        [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PqQtNacAnoMenos12 { get; set; }
-
         [Display(Name = "PqQtNac Ano - 11")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public float PqQtNacAnoMenos11 { get; set; }
@@ -241,41 +254,45 @@ namespace XlToDb.Model
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public float PqQtNacAnoMenos10 { get; set; }
 
-        [Display(Name = "PqQtNac Ano - 9")]
+        [Display(Name = "PqQtNac Ano - 09")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PqQtNacAnoMenos9 { get; set; }
+        public float PqQtNacAnoMenos09 { get; set; }
 
         [Display(Name = "PqQtNac Ano - 8")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PqQtNacAnoMenos8 { get; set; }
+        public float PqQtNacAnoMenos08 { get; set; }
 
         [Display(Name = "PqQtNac Ano - 7")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PqQtNacAnoMenos7 { get; set; }
+        public float PqQtNacAnoMenos07 { get; set; }
 
         [Display(Name = "PqQtNac Ano - 6")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PqQtNacAnoMenos6 { get; set; }
+        public float PqQtNacAnoMenos06 { get; set; }
 
         [Display(Name = "PqQtNac Ano - 5")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PqQtNacAnoMenos5 { get; set; }
+        public float PqQtNacAnoMenos05 { get; set; }
 
         [Display(Name = "PqQtNac Ano - 4")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PqQtNacAnoMenos4 { get; set; }
+        public float PqQtNacAnoMenos04 { get; set; }
 
         [Display(Name = "PqQtNac Ano - 3")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PqQtNacAnoMenos3 { get; set; }
+        public float PqQtNacAnoMenos03 { get; set; }
 
         [Display(Name = "PqQtNac Ano - 2")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PqQtNacAnoMenos2 { get; set; }
+        public float PqQtNacAnoMenos02 { get; set; }
+
+        [Display(Name = "PqQtNac Ano - 1")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float PqQtNacAnoMenos01 { get; set; }
 
         [Display(Name = "PqQtNac Ano")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PqQtNacAno { get; set; }
+        public float PqQtNacAno00 { get; set; }
 
         [Display(Name = "PqQtNac Total")]       // CA
         [DisplayFormat(DataFormatString = "{0:N0}")]
@@ -481,10 +498,6 @@ namespace XlToDb.Model
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public float PipiIpiNacAno { get; set; }
 
-        [Display(Name = "PstStNac Ano - 12")]
-        [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PstStNacAnoMenos12 { get; set; }
-
         [Display(Name = "PstStNac Ano - 11")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public float PstStNacAnoMenos11 { get; set; }
@@ -495,39 +508,43 @@ namespace XlToDb.Model
 
         [Display(Name = "PstStNac Ano - 9")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PstStNacAnoMenos9 { get; set; }
+        public float PstStNacAnoMenos09 { get; set; }
 
         [Display(Name = "PstStNac Ano - 8")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PstStNacAnoMenos8 { get; set; }
+        public float PstStNacAnoMenos08 { get; set; }
 
         [Display(Name = "PstStNac Ano - 7")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PstStNacAnoMenos7 { get; set; }
+        public float PstStNacAnoMenos07 { get; set; }
 
         [Display(Name = "PstStNac Ano - 6")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PstStNacAnoMenos6 { get; set; }
+        public float PstStNacAnoMenos06 { get; set; }
 
         [Display(Name = "PstStNac Ano - 5")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PstStNacAnoMenos5 { get; set; }
+        public float PstStNacAnoMenos05 { get; set; }
 
         [Display(Name = "PstStNac Ano - 4")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PstStNacAnoMenos4 { get; set; }
+        public float PstStNacAnoMenos04 { get; set; }
 
         [Display(Name = "PstStNac Ano - 3")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PstStNacAnoMenos3 { get; set; }
+        public float PstStNacAnoMenos03 { get; set; }
 
         [Display(Name = "PstStNac Ano - 2")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PstStNacAnoMenos2 { get; set; }
+        public float PstStNacAnoMenos02 { get; set; }
+
+        [Display(Name = "PstStNac Ano - 1")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float PstStNacAnoMenos01 { get; set; }
 
         [Display(Name = "PstStNac Ano")]        // EK
         [DisplayFormat(DataFormatString = "{0:N0}")]
-        public float PstStNacAno { get; set; }
+        public float PstStNacAno00 { get; set; }
 
         [Display(Name = "PfbFatBr Ano - 12")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
