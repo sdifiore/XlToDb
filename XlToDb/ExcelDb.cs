@@ -1263,5 +1263,38 @@ namespace XlToDb
 
             db.SaveChanges();
         }
+
+        public void PvppaVPVexPlanejVendas()
+        {
+            var db = new EntityContext();
+            var plan = db.PlanejVendas;
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PlanejVendas);
+            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 6; i < 269; i++)
+            {
+                int j = 208;
+                string apelido = range.Cells[i, 5].Value2.ToString();
+                var planej = plan.SingleOrDefault(p => p.Produto.Apelido == apelido);
+                planej.PvppvaVPVexAnoMenos12 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos11 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos10 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos9 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos8 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos7 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos6 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos5 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos4 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos3 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos2 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAno = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+
+                Console.WriteLine(i);
+            }
+
+            db.SaveChanges();
+        }
     }
 }
