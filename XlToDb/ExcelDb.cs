@@ -1240,5 +1240,28 @@ namespace XlToDb
 
             db.SaveChanges();
         }
+
+        public void PqeCriterioPlanejVendas()
+        {
+            var db = new EntityContext();
+            var plan = db.PlanejVendas;
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PlanejVendas);
+            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 6; i < 269; i++)
+            {
+                int j = 180;
+                string apelido = range.Cells[i, 5].Value2.ToString();
+                var planej = plan.SingleOrDefault(p => p.Produto.Apelido == apelido);
+                planej.PqeCriterio = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString().ToLower() : "-";
+                planej.PqeAumDim = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+
+                Console.WriteLine(i);
+            }
+
+            db.SaveChanges();
+        }
     }
 }

@@ -38,7 +38,8 @@ namespace XlToDb
             //xl.FatHistorico();
             //xl.AnoPlanejVendas();
             //xl.VarsPlanejVendas();
-            xl.VarPvPlanejVendas();
+            //xl.VarPvPlanejVendas();
+            xl.PqeCriterioPlanejVendas();
         }
     }
 }
