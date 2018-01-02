@@ -1300,21 +1300,17 @@ namespace XlToDb
         public void PlanejProducao()
         {
             var db = new EntityContext();
-            var pvs = db.PlanejVendas.ToList();
             var produtos = db.Produtos.ToList();
             int i = 0;
 
             foreach (var item in produtos)
             {
                 var pp = new PlanejProducao();
-                var pv = pvs.SingleOrDefault(p => p.ProdutoId == item.Id);
-                if (pv == null) continue;
                 pp.ProdutoId = item.Id;
-                pp.PlanejVendaId = pv.Id;
-
-                Console.WriteLine(i++);
                 db.PlanejProducoes.Add(pp);
                 db.SaveChanges();
+
+                Console.WriteLine(i++);
             }
         }
     }

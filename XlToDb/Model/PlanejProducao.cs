@@ -13,9 +13,66 @@ namespace XlToDb.Model
         [Display(Name = "Código")]
         public Produto Produto { get; set; }
 
-        public int PlanejVendaId { get; set; }
+        [Display(Name = "Un/UArm")]
+        public int UnUArm { get; set; }
 
-        public PlanejVenda PlanejVenda { get; set; }
+        [Display(Name = "Estoque de Reposição")]
+        public float EstoqueReposicao { get; set; }
+
+        [StringLength(3)]
+        [Display(Name = "Tipo de Produto")]
+        public string TipoPcp { get; set; }
+
+        [Display(Name = "Estoque")]
+        public float Estoque { get; set; }
+
+        [Display(Name = "Venda mês -11")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos11 { get; set; }
+
+        [Display(Name = "Venda mês -10")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos10 { get; set; }
+
+        [Display(Name = "Venda mês -9")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos09 { get; set; }
+
+        [Display(Name = "Venda mês -8")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos08 { get; set; }
+
+        [Display(Name = "Venda mês -7")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos07 { get; set; }
+
+        [Display(Name = "Venda mês -6")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos06 { get; set; }
+
+        [Display(Name = "Venda mês -5")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos05 { get; set; }
+
+        [Display(Name = "Venda mês -4")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos04 { get; set; }
+
+        [Display(Name = "Venda mês -3")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos03 { get; set; }
+
+        [Display(Name = "Venda mês -2")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos02 { get; set; }
+
+        [Display(Name = "Venda mês -1")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos01 { get; set; }
+
+        [Display(Name = "Venda mês")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float VendaMesMenos00 { get; set; }
 
         [Display(Name = "Produção Mensal -11")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
