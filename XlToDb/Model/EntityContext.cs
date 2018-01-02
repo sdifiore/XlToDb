@@ -46,6 +46,7 @@ namespace XlToDb.Model
         public DbSet<PlanejCompra> PlanejCompras { get; set; }
         public DbSet<PlanejMod> PlanejMods { get; set; }
         public DbSet<PlanejNecessid> PlanejNecessides { get; set; }
+        public DbSet<PlanejProducao> PlanejProducoes { get; set; }
         public DbSet<PlanejVenda> PlanejVendas { get; set; }
         public DbSet<PrecoNacional> PrecosNacionais { get; set; }
         public DbSet<PrecoExportacao> PrecosExportacao { get; set; }

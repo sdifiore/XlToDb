@@ -106,6 +106,7 @@
     <Compile Include="Model\PlanejCompra.cs" />
     <Compile Include="Model\PlanejMod.cs" />
     <Compile Include="Model\PlanejNecessid.cs" />
+    <Compile Include="Model\PlanejProducao.cs" />
     <Compile Include="Model\PlanejVenda.cs" />
     <Compile Include="Model\PrecoExportacao.cs" />
     <Compile Include="Model\PrecoNacional.cs" />

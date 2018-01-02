@@ -40,7 +40,8 @@ namespace XlToDb
             //xl.VarsPlanejVendas();
             //xl.VarPvPlanejVendas();
             //xl.PqeCriterioPlanejVendas();
-            xl.PvppaVPVexPlanejVendas();
+            //xl.PvppaVPVexPlanejVendas();
+            xl.PlanejProducao();
         }
     }
 }

@@ -1278,23 +1278,44 @@ namespace XlToDb
                 int j = 208;
                 string apelido = range.Cells[i, 5].Value2.ToString();
                 var planej = plan.SingleOrDefault(p => p.Produto.Apelido == apelido);
-                planej.PvppvaVPVexAnoMenos12 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                planej.PvppvaVPVexAnoMenos11 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                planej.PvppvaVPVexAnoMenos10 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                planej.PvppvaVPVexAnoMenos9 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                planej.PvppvaVPVexAnoMenos8 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                planej.PvppvaVPVexAnoMenos7 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                planej.PvppvaVPVexAnoMenos6 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                planej.PvppvaVPVexAnoMenos5 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                planej.PvppvaVPVexAnoMenos4 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                planej.PvppvaVPVexAnoMenos3 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                planej.PvppvaVPVexAnoMenos2 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                planej.PvppvaVPVexAno = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos12 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos11 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos10 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos9 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos8 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos7 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos6 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos5 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos4 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos3 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAnoMenos2 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                planej.PvppvaVPVexAno = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
 
                 Console.WriteLine(i);
             }
 
             db.SaveChanges();
+        }
+
+        public void PlanejProducao()
+        {
+            var db = new EntityContext();
+            var pvs = db.PlanejVendas.ToList();
+            var produtos = db.Produtos.ToList();
+            int i = 0;
+
+            foreach (var item in produtos)
+            {
+                var pp = new PlanejProducao();
+                var pv = pvs.SingleOrDefault(p => p.ProdutoId == item.Id);
+                if (pv == null) continue;
+                pp.ProdutoId = item.Id;
+                pp.PlanejVendaId = pv.Id;
+
+                Console.WriteLine(i++);
+                db.PlanejProducoes.Add(pp);
+                db.SaveChanges();
+            }
         }
     }
 }
