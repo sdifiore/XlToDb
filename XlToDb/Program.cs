@@ -15,7 +15,7 @@ namespace XlToDb
             //xl.QtdEmbalagem();
             //xl.ParteProduto();
             //xl.Cotacao();
-            //xl.Alteracao();
+            xl.Alteracao();
             //xl.UpdateTipo();
             //xl.Insumo();
             //xl.Estrutura();
@@ -41,7 +41,7 @@ namespace XlToDb
             //xl.VarPvPlanejVendas();
             //xl.PqeCriterioPlanejVendas();
             //xl.PvppaVPVexPlanejVendas();
-            xl.PlanejProducao();
+            //xl.PlanejProducao();
         }
     }
 }
